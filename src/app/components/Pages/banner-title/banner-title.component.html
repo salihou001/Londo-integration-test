@@ -1,0 +1,12 @@
+<section class="best_seller flex items-center justify-between min-w-[1280px] mt-6 mb-2">
+    @if(listTitle[0]){
+        <div class="best_seller_left text-primary-900">{{ listTitle[0] }}</div>
+    }@else{
+        <div class="best_seller_left text-primary-900 invisible">{{ listTitle[0] }}</div>
+    }
+    @if(listTitle[1]){
+        <div class="best_seller_right text-brand-red">{{ listTitle[1] }}</div>
+    }@else{
+        <div class="best_seller_right text-brand-red invisible">{{ listTitle[1] }}</div>
+    }
+</section>

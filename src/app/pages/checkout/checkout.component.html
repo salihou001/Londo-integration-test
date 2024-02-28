@@ -1,0 +1,304 @@
+<div class="w-screen h-screen bg-white overflow-hidden">
+    <!-- start Header -->
+    <div class="header-top w-full h-[8%] border border-primary-200 shadow-md">
+        <div class="flex items-center justify-between h-full max-w-7xl mx-auto">
+            <div class="header-top__left flex items-center gap-4">
+                <div>
+                    <img (click)="goHome()" class="cursor-pointer" src="assets/Media/Svg/image.svg" alt="" />
+                </div>
+                <span class="inline-block text-black">Checkout</span>
+            </div>
+            <div class="header-top__right flex items-center grid grid-cols-3 grid-rows-1 w-[500px]">
+                <div class="flex items-center justify-end">
+                    <div class="flex items-center justify-between p-2">
+                        <img class="cursor-pointer" src="assets/Media/Svg/phone.svg" alt="" />
+                    </div>
+                    <div>
+                        <h6 class="text-primary-500">Have problems?</h6>
+                        <h2>+242 06 908 3535</h2>
+                    </div>
+                </div>
+                <div class="flex items-center justify-end">
+                    <div class="flex items-center gap-2">
+                        <div>
+                            <img class="cursor-pointer" src="assets/Media/Svg/secure.svg" alt="" />
+                        </div>
+                        <div>Secure payment</div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-end">
+                    <div class="flex items-center gap-2">
+                        <div>
+                            <img class="cursor-pointer" src="assets/Media/Svg/loader.svg" alt="" />
+                        </div>
+                        <div>Easy returns</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End header -->
+
+    <!-- start main -->
+    <main class="w-full h-[92%]">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 grid-rows-1 gap-8 h-full">
+            <div class="form mt-8">
+                <h1 class="pt-4 text-primary-900 contact flex items-center gap-1">
+                    <span class="inline-block succes_1 hidden">
+                        <img src="assets/Media/image/succes.png" alt="image 3-2">
+                    </span>
+                    <span>1. Contact</span>
+                </h1>
+                <!-- login or sign bloc -->
+                <p class="user_info hidden">Franck Libam, +243 336 364 833, franck&gmail.com <span
+                        class="text-brand-red cursor-pointer" (click)="prevuisStep()">Edit info</span></p>
+                <section class="logins min-h-[250px] w-full">
+                    <div class="flex items-center justify-start gap-2 my-4">
+                        <button (click)="toggleModeNewUser()" class="btn-user new_user bg-[#FCEDEE] text-brand-red">I’m
+                            a new customer</button>
+                        <button (click)="toggleModeOldUser()"
+                            class="btn-user old_user bg-primary-200 text-primary-700">I’m existing customer</button>
+                    </div>
+                    <div class="sign_login w-full h-[280px] relative">
+                        <div class="login absolute top-0 h-full w-[70%]">
+                            <form action="" class="w-full">
+                                <div class="w-full">
+                                    <!-- Email -->
+                                    <app-input-text [name]="'email'" [label]="'Email'" [entity]="entity" />
+                                </div>
+                                <div class="w-full">
+                                    <!-- password -->
+                                    <app-input-text [name]="'password'" [label]="'Password'" [entity]="entity" />
+                                </div>
+                                <div class="login_forgot flex items-center gap-4 mt-6">
+                                    <div>
+                                        <div (click)="goToLogin()" class="btn-1 log">Log in</div>
+                                    </div>
+                                    <div class="text-brand-red border-b border-primary-300 cursor-pointer">Forgot
+                                        password</div>
+                                </div>
+                                <div class="or my-2">
+                                    <img class="w-[70%]" src="assets/Media/image/or.png" alt="" />
+                                </div>
+                                <div class="login_facebook my-2">
+                                    <div
+                                        class="w-[70%] border flex items-center justify-center btn-1 bg-[#3B5998] text-white">
+                                        Log in with Facebook
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="sign absolute top-0 h-[280px] w-full hidden">
+                            <form action="" class="w-[70%]">
+                                <div class="grid grid-cols-2 grid-rows-1 w-full gap-4">
+                                    <div class="w-full">
+                                        <!-- first name -->
+                                        <app-input-text [name]="'firstName'" [label]="'First Name'" [entity]="entity"  />
+                                    </div>
+                                    <div class="w-full">
+                                        <!-- last name -->
+                                        <app-input-text [name]="'lastName'"  [label]="'Last Name'" [entity]="entity" />
+                                    </div>
+                                </div>
+                                <!-- Telephone -->
+                                <app-input-text [name]="'telephone'" [label]="'Telephone'" [entity]="entity" />
+                                <!-- Email and password -->
+                                <div class="grid grid-cols-2 grid-rows-1 w-full gap-4">
+                                    <div class="w-full">
+                                        <!-- Email -->
+                                        <app-input-text [name]="'email'" [label]="'Email'" [entity]="entity" />
+                                    </div>
+                                    <div class="w-full">
+                                        <!-- Password -->
+                                        <app-input-text [name]="'password'" [label]="'Password'" [entity]="entity" />
+                                    </div>
+                                </div>
+                                <!-- bouton register -->
+                                <div class="register_btn flex items-center justify-end">
+                                    <div (click)="goToLogin()"
+                                        class="w-[50%] border mt-4 flex items-center justify-center btn-1 bg-[#F4A5A8] text-white">
+                                        Proceed to next step
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+                <!-- end log or sing -->
+                <!-- start delivery -->
+                <h1 class="pt-4 text-primary-900 address flex items-center gap-1">
+                    <span class="inline-block succes_2 hidden">
+                        <img src="assets/Media/image/succes.png" alt="image 3-2">
+                    </span>
+                    <span>2. Address and delivery</span>
+                </h1>
+                <p class="address_info hidden">Pickup station, Point Relais Chronotys - Biyem-Assi, Descente Tam-Tam à
+                    côté d’Express Union <span class="text-brand-red cursor-pointer" (click)="prevuisStep()">Edit info</span></p>
+                <section class="address_delivery min-h-[400px] hidden">
+                    <h1 class="text-primary-900 mt-4">How do you want your order delivered?</h1>
+                    <p class="flex items-center gap-2 mt-3">
+                        <span class="inline-block">
+                            <img src="assets/Media/image/eclipse.png" alt="image 3-2">
+                        </span>
+                        <span class="inline-block">Standard delivery</span>
+                    </p>
+                    <p class="ml-8">Will be delivered between Tuesday 29 Jan and Tuesday 5 Feb</p>
+                    <p class="text-brand-red ml-8">From 3000 FCFA</p>
+                    <form action="" class="ml-8 mt-2">
+                        <div class="grid grid-cols-2 grid-rows-1 w-full gap-4">
+                            <!-- State -->
+                            <app-input-select [name]="'State'" [listOptions]="['Douala','Yaounde']" />
+                            <!-- Region -->
+                            <app-input-select [name]="'Region'" [listOptions]="['Littoral','Centre']" />
+                        </div>
+
+                        <div class="w-full mt-2">
+                            <div>
+                                <label for="Region">Address</label>
+                            </div>
+                            <textarea placeholder="Bio"
+                                class="input w-full min-h-[70px] textarea textarea-bordered textarea-sm"></textarea>
+                        </div>
+                        <div class="register_btn flex items-center justify-end">
+                            <div (click)="nextStep()"
+                                class="w-[45%] border mt-4 flex items-center justify-center btn-1 bg-[#F4A5A8] text-white">
+                                Proceed to next step
+                            </div>
+                        </div>
+                    </form>
+                </section>
+                <!--  -->
+                <h1 class="pt-4 text-primary-900 contact flex items-center gap-1">
+                    <span class="inline-block succes_3 hidden">
+                        <img src="assets/Media/image/succes.png" alt="image 3-2">
+                    </span>
+                    <span>3. Payment</span>
+                </h1>
+                <section class="payement_method min-h-[400px] hidden">
+                    <div>
+                        <div class="flex flex-col">
+                            <div class="flex items-center justify-start gap-2">
+                                <div>
+                                    <label class="label cursor-pointer">
+                                        <input (click)="modeCash()" type="radio" name="radio-10"
+                                            class="radio checked:bg-red-500" checked />
+                                    </label>
+                                </div>
+                                <div class="flex items-center gap-2 font-bold">
+                                    <div>
+                                        <img src="assets/Media/image/bank.png" alt="image 3-2">
+                                    </div>
+                                    <div>Cash on delivery</div>
+                                </div>
+                            </div>
+                            <div class="cash min-h-[50px] ml-20">
+                                <p>Steps to proceed with your payment are as follow:</p>
+                                <div class="w-full">
+                                    <ul class="space-y-2 pl-8">
+                                        <li>In cash, be sure to have the exact amount. Our delivery agents are not
+                                            provided with change.</li>
+                                        <li>By transferring through MTN Mobile Money from the exact amount of the order
+                                            to the phone number indicated by the agent during delivery.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col">
+                            <div class="flex items-center justify-start gap-2">
+                                <div>
+                                    <label class="label cursor-pointer">
+                                        <input (click)="modeMtn()" type="radio" name="radio-10"
+                                            class="radio checked:bg-red-500" />
+                                    </label>
+                                </div>
+                                <div class="flex items-center gap-2 font-bold">
+                                    <div>
+                                        <img src="assets/Media/image/mtn.png" alt="image 3-2">
+                                    </div>
+                                    <div>MTM Mobile Money</div>
+                                </div>
+                            </div>
+                            <div class="mtn hidden min-h-[50px] ml-20">
+                                <p>Pay for your order at delivery either:</p>
+                                <div class="w-full">
+                                    <ul class="space-y-2 pl-8">
+                                        <li>Fill in below your MTN mobile phone number. Please don't forget to add the
+                                            country code number 237 (example: 237678145656).</li>
+                                        <li>Confirm your order by clicking on "complete your order"By transferring
+                                            through MTN Mobile Money from the exact amount of the order to the phone
+                                            number indicated by the agent during delivery.</li>
+                                        <li>You will receive a request on your phone, please confirm the payment by
+                                            dialing *126*1# and enter your MTN Mobile Money secret PIN on your device.
+                                        </li>
+                                        <li>If your payment is successful you will be redirected to the confirmation
+                                            page and be given your order number.</li>
+                                    </ul>
+                                </div>
+                                <div class="grid grid-cols-2 grid-rows-1">
+                                    <div class="ml-24">
+                                        <div class="MTN_MoMo w-full mt-2">
+                                            <div>
+                                                <label for="MTN MoMo Phone">MTN MoMo Phone</label>
+                                            </div>
+                                            <div class="w-full">
+                                                <input class="input w-full" placeholder="+237*********" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-end justify-end">
+                                        <div (click)="nextStep()"
+                                            class="w-[50%] border mt-4 flex items-center justify-center btn-1 bg-brand-red text-white">
+                                            Confirm order
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="mt-8">
+                <div class="blog border border-primary-200">
+                    <div class="mx-4">
+                        <app-banner-title [listTitle]="['Order summary','Edit order']"></app-banner-title>
+                    </div>
+                    <div class="flex items-center border-b border-primary-200 p-4">
+                        <div class="h-full flex items-center gap-4">
+                            <img class="w-[104px] h-[104px]" src="assets/Media/image/Group 4-2.png" alt="image 3-2">
+                            <div>
+                                <h2>Apple iPhone 6 64GB HDD - 12 Months + Cover + Screen ...</h2>
+                                <p><span class="text-primary-600 inline-block mr-2">250,000 FCFA </span> <span
+                                        class="inline-block">159,900 FCFA</span></p>
+                                <p class="text-brand-red font-normal flex items-center justify-between mt-4"><span
+                                        class="inline-block">1 pcs</span><span class="inline-block">159,900 FCFA</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center border-b border-primary-200 p-4">
+                        <div class="h-full flex items-center gap-4">
+                            <img class="w-[104px] h-[104px]" src="assets/Media/image/Group 4-2.png" alt="image 3-2">
+                            <div>
+                                <h2>Apple iPhone 6 64GB HDD - 12 Months + Cover + Screen ...</h2>
+                                <p><span class="text-primary-600 inline-block mr-2">250,000 FCFA </span> <span
+                                        class="inline-block">159,900 FCFA</span></p>
+                                <p class="text-brand-red font-normal flex items-center justify-between mt-4"><span
+                                        class="inline-block">1 pcs</span><span class="inline-block">159,900 FCFA</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer_blog p-3">
+                        <div class="mx-4 flex items-center justify-between">
+                            <div>Total: </div>
+                            <div>359,800 FCFA</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- end main -->
+</div>

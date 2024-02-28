@@ -1,0 +1,245 @@
+<div class="super-container w-screen min-h-[1200px] flex flex-col items-center justify-between bg-primary-100 relative">
+    <!-- start header -->
+    <app-header></app-header>
+    <!-- End header -->
+    <!-- start main -->
+    <div class="w-full h-[400px] max-w-7xl mx-auto flex flex-col gap-2 items-center">
+        <div class="h-[80%] w-full">
+            <div class="grid grid-cols-4 grid-rows-1 h-full gap-2">
+                <div class="h-full">
+                    <div class="min-h-[60%]">
+                    </div>
+                    <div class="h-[40%] border-t border-primary-200 shadow-md bg-white">
+                        <h3 class="Trending text-primary-500 py-2 px-4">New arrivals</h3>
+                        <div class="grid" style="height: calc(100% - 34px);">
+                            @for (item of listNewArrival; track item.id) {
+                            <app-new-arrival [items]="item"></app-new-arrival>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="h-full col-span-2 my-2 relative w-full">
+                    <img class="w-full h-full object-cover absolute top-0" src="assets/Media/image/image.png" alt="">
+                    <div
+                        class="overlay_next_previus z-10 flex items-center justify-between w-full absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
+                        <div
+                            class="cursor-pointer previus bg-primary-100 p-2 rounded-r-md flex items-center justify-center">
+                            <img class="w-[20.74px] h-[20.77px]" src="assets/Media/Svg/round-arrow_back_ios-24px.svg"
+                                alt="">
+                        </div>
+                        <div
+                            class="cursor-pointer next bg-primary-100 p-2 rounded-l-md flex items-center justify-center">
+                            <img class="w-[20.74px] h-[20.77px]" src="assets/Media/Svg/round-arrow_back_ios-24px-1.svg"
+                                alt="">
+                        </div>
+                    </div>
+                    <div class="overlay_bad absolute bottom-3 right-5">
+                        <ul class="w-[212px] grid grid-cols-5 grid-rows-1 gap-2">
+                            <li class="h-[4px] bg-white opacity-[70%]"></li>
+                            <li class="h-[4px] bg-white opacity-[70%]"></li>
+                            <li class="h-[4px] bg-white opacity-[70%]"></li>
+                            <li class="h-[4px] bg-white opacity-[70%]"></li>
+                            <li class="h-[4px] bg-white opacity-[70%]"></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="h-full my-2">
+                    <div class="h-[60%] bg-white grid grid-cols-1 grid-rows-4 w-full border border-primary-200">
+                        @for (item of listDetail; track item.id) {
+                        <app-menu-detail [items]="item"></app-menu-detail>
+                        }
+                    </div>
+                    <div class="h-[40%] bg-white border-t border-primary-200 shadow-md">
+                        <div class="mx-4">
+                            <h3 class="Trending text-primary-500 py-2">Trending article</h3>
+                            <div class="w-full flex items-center gap-4" style="height: calc(100% - 34px);">
+                                <div class="smartphone">
+                                    <img class="h-[88px] min-w-[72px]" src="assets/Media/image/Mask Group.png" alt="">
+                                </div>
+                                <div>
+                                    <div class="text-primary-900">New iPhones presentation gone not as planned ...</div>
+                                    <div class="text-primary-500">21 Jan 2019</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="h-[20%] bg-white w-full mt-5 grid grid-cols-6 grid-rows-1 border border-primary-200 shadow-md p-3">
+            <div class=" px-4 py-1.5 border-r border-primary-200 flex items-center justify-center"><img
+                    class="w-[32.57px] h-[40px]" src="assets/Media/Svg/apple-1.svg" alt=""></div>
+            <div class=" px-4 py-1.5 border-r border-primary-200 flex items-center justify-center"><img
+                    class="w-[111.6px] h-[36px]" src="assets/Media/Svg/Samsung_Logo.svg" alt=""></div>
+            <div class=" px-4 py-1.5 border-r border-primary-200 flex items-center justify-center"><img
+                    class="w-[44px] h-[44px]" src="assets/Media/Svg/Xiaomi_logo.svg" alt=""></div>
+            <div class=" px-4 py-1.5 border-r border-primary-200 flex items-center justify-center"><img
+                    class="w-[48px] h-[48.67px]" src="assets/Media/Svg/image 2.svg" alt=""></div>
+            <div class=" px-4 py-1.5 border-r border-primary-200 flex items-center justify-center"><img
+                    class="w-[122px] h-[26px]" src="assets/Media/Svg/image 3.svg" alt=""></div>
+            <div class=" px-4 py-1.5 border-primary-200 flex items-center justify-center"><img
+                    class="w-[136px] h-[29px]" src="assets/Media/Svg/image 4.svg" alt=""></div>
+        </div>
+    </div>
+    <!-- end main -->
+
+    <!-- Section Best seller -->
+    <app-banner-title [listTitle]="['Best sellers','All best sellers']"></app-banner-title>
+    <!-- galery best seller start -->
+    <section class="galery_best_seller relative min-h-[550px] w-full flex items-start justify-center">
+        <div class="grid grid-cols-5 z-10 grid-rows-1 gap-3 max-w-7xl mx-auto h-[361px]">
+            @for (item of listBestSeller; track item.id) {
+            <app-best-seller [seller]="item" (phone)="getPhone($event)" />
+            }
+        </div>
+        <div class="banner_text absolute z-0 bottom-0 min-h-[120px] w-full mx-auto">
+            <div
+                class="max-w-7xl mx-auto bg-primary-200 min-h-[120px] flex items-center justify-center text-primary-600">
+                Banner place</div>
+        </div>
+    </section>
+    <!-- galery best seller end -->
+
+    <!-- Section Sale -->
+    <app-banner-title [listTitle]="['On sale','All on sale']"></app-banner-title>
+    <!-- Section Sale start -->
+
+    <!-- galery best seller start -->
+    <section class="galery_best_seller min-h-[380px]">
+        <div class="grid grid-cols-5 z-10 grid-rows-1 gap-3 max-w-7xl mx-auto h-[361px]">
+            @for (item of listBestSale; track item.id) {
+            <app-best-seller [seller]="item"></app-best-seller>
+            }
+        </div>
+    </section>
+    <!-- galery best seller end -->
+
+    <!-- Start section sign-->
+    <section class="sign w-full mt-12">
+        <div class="h-[120px] max-w-7xl mx-auto relative flex items-center justify-center">
+            <div class="min-w-[88%] h-[50px] flex items-center gap-4 justify-between">
+                <h2 class="whitespace-nowrap">Sign up to get special discounts!</h2>
+                <div class="min-w-[60%] h-full flex items-center gap-4">
+                    <div class="h-full w-[70%] bg-[#F5F5FA] raduis-3">
+                        <input class="w-full h-full outline-none border-none bg-transparent text-xl pl-3" type="text"
+                            placeholder="Your email">
+                    </div>
+                    <div
+                        class="btn-send h-full cursor-pointer w-[30%] raduis-3 bg-brand-red flex items-center justify-center text-white">
+                        Send
+                    </div>
+                </div>
+            </div>
+            <img class="absolute top-0 left-3 h-[36px] w-[59px] object-cover" src="assets/Media/image/30.png" alt="">
+            <img class="absolute top-12 -left-[15px] h-[36px] w-[59px] object-cover" src="assets/Media/image/40.png"
+                alt="">
+            <img class="absolute bottom-0 left-16 h-[36px] w-[59px] object-cover" src="assets/Media/image/50.png"
+                alt="">
+        </div>
+    </section>
+    <!-- End section sign-->
+
+    <!-- Section New Arrival -->
+    <app-banner-title [listTitle]="['New arrivals','All new arrivals']"></app-banner-title>
+    <!-- Section New arrival end -->
+
+    <!-- galery best seller start -->
+    <section class="galery_best_seller min-h-[380px]">
+        <div class="grid grid-cols-5 z-10 grid-rows-1 gap-3 max-w-7xl mx-auto h-[361px]">
+            @for (item of listBestSale; track item.id) {
+            <app-best-seller [seller]="item"></app-best-seller>
+            }
+        </div>
+    </section>
+    <!-- galery best seller end -->
+
+    <!-- start section service -->
+    <div class="service max-w-7xl mx-auto mt-12 bg-white">
+        <div class="h-[20%] w-full mt-2 grid grid-cols-5 grid-rows-1 border border-primary-200 shadow-md">
+            @for (service of listService; track service.id) {
+            <app-our-service [service]="service"></app-our-service>
+            }
+        </div>
+    </div>
+    <!-- end section service -->
+
+    <!--Banner title SEO  Start-->
+    <app-banner-title [listTitle]="['SEO Text']"></app-banner-title>
+    <!--Banner title SEO End -->
+
+    <!-- Start text seo -->
+    <div class="seo max-w-7xl mx-auto mb-12">
+        <p class="text-balance">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna
+            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis
+            aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+            sint
+            occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum
+            dolor sit
+            amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+            enim ad minim
+            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+            dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna
+            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis
+            aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+            sint
+            occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum
+            dolor sit
+            amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+            enim ad minim
+            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+            dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <p class="text-balance mt-4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna
+            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis
+            aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+            sint
+            occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum
+            dolor sit
+            amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+            enim ad minim
+            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+            dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna
+            aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis
+            aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+            sint
+            occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum
+            dolor sit
+            amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+            enim ad minim
+            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+            dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+    </div>
+    <!-- End text seo -->
+
+    <!-- start footer -->
+    <app-footer></app-footer>
+    <!-- end footer -->
+    <!-- overlay basket -->
+    <app-overlay-basket/>
+</div>

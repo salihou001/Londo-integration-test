@@ -1,0 +1,81 @@
+.sale_info h2{
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+}
+
+.sale_info h6{
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.start{
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.start h3{
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    color: black;
+}
+
+.sale_info ul li:nth-child(1){
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.sale_info ul li{
+    position: relative;
+}
+
+.sale_info ul li::before{
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #ED1C24;
+    top: 50%;
+    left: -15px;
+}
+
+.banner_info{
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 400;
+}
+
+main h1{
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+    font-weight: 700;
+}
+
+main p{
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+}
+
+.modal_info h3{
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+}
+
+.body h2{
+    font-size: 1.125em;
+    line-height: 1.5rem;
+    font-weight: 700;
+}
+
+.body p span:nth-child(1){
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-decoration: line-through;
+}
+
+.body p span:nth-child(2){
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.5;
+}

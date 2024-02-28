@@ -1,0 +1,8 @@
+<div class="w-full mt-2">
+    <div>
+        <label for="Email">{{label}}</label>
+    </div>
+    <div class="w-full">
+        <input class="input w-full" type="text" [name]="name" #userInput (keyup)="onChange(userInput.value)">
+    </div>
+</div>

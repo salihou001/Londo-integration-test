@@ -1,0 +1,89 @@
+.header-top{
+    width: 100%;
+}
+
+.header-top__left span{
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+}
+
+h6{
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    white-space: nowrap;
+}
+
+h2{
+    font-size: 0.875rem;
+    line-height: 1rem;
+    white-space: nowrap;
+}
+
+.header-top__right{
+    font-size: 0.875rem;
+    line-height: 1rem;
+}
+
+.form h1{
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+}
+
+.login_forgot div.log{
+    height: 48px;
+    width: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ED1C24;
+    border-radius: 0.188rem;
+    color: white;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.address_delivery h1{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+}
+
+.address_delivery > p:nth-child(2){
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 700;
+}
+
+.address_delivery > p:nth-child(4){
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    font-weight: 700;
+}
+
+.address_info{
+    font-size: .8rem;
+    line-height: 1.5rem;
+    font-weight: 700;
+}
+
+ul li:nth-child(1){
+    font-size: .8rem;
+    line-height: 1.5rem;
+}
+
+ul li{
+    position: relative;
+    font-size: .8rem;
+    line-height: 1.5rem;
+}
+
+ul li::before{
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #ED1C24;
+    top: 20%;
+    left: -15px;
+}

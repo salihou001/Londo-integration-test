@@ -1,0 +1,31 @@
+div.galery_info > p:nth-child(1){
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1;
+    margin: .5em 0;
+}
+
+div.galery_info > p:nth-child(2){
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.25;
+}
+
+.galery_price p:nth-child(1){
+    font-size: 1.125rem;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.galery_price p:nth-child(2){
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-decoration: line-through;
+}
+
+.start_text{
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1;
+}

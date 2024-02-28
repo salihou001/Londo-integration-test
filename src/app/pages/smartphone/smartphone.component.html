@@ -1,0 +1,207 @@
+<div class="super-container w-screen min-h-[1200px] flex flex-col items-center justify-between bg-primary-100">
+    
+    <!-- start header -->
+    <app-header></app-header>
+    <!-- End header -->
+
+    <main class="max-w-7xl mx-auto">
+        <div class="header_nav py-6">
+            <img class="w-[391px] h-[20px]" src="assets/Media/image/nav_smartphone.png" alt="">
+        </div>
+        <!-- detail phone section start -->
+        <div class="sale grid grid-cols-2 grid-rows-1 gap-2 h-[400px] w-full">
+            <div class="sale_img border bg-white flex items-center justify-center border-primary-200">
+                <img class="h-[394px] w-[324px] object-cover" [src]="'assets/Media/image/'+phone.image+'.png'" alt="">
+            </div>
+            <div class="sale_info border-b w-full border-primary-200 w-full">
+                <h2 class="text-primary-900 h-[72px] w-full">{{phone.info2}}</h2>
+                <h6 class="text-primary-600">by Apple</h6>
+                <div class="start flex items-center justify-start gap-2">
+                    <div class="py-2">
+                        <img class="h-[24px] w-[139.16px] object-cover" src="assets/Media/image/Group 16.png" alt="">
+                    </div>
+                    <div>4.0 (<span class="text-brand-red">36 reviews</span>)</div>
+                    <div class="text-brand-red border-b-2 border-primary-300">Leave a review</div>
+                </div>
+                <h3 class="mt-4 mb-2">Key Features</h3>
+                <div class="w-full h-[140px]">
+                    <ul class="space-y-2 pl-8">
+                        <li>Display: 4.7’’,IPS  LED-backlit 750 x 1334 pixels</li>
+                        <li>Memory: 64GB HDD, 1GB RAM</li>
+                        <li>Camera: 8MP Rear, 1.2MP Front</li>
+                        <li>Operating System: iOS 8 upgradable to iOS 10.3.3</li>
+                        <li>Processor: Dual-Core 1.4GHz</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="grid grid-cols-2 grid-rows-1">
+            <div class="grid grid-cols-4 grid-rows-1 gap-2 max-w-7xl mx-auto py-4">
+                <div class="cursor-pointer">
+                    <img src="assets/Media/image/Group 6.png" alt="">
+                </div>
+                <div class="cursor-pointer">
+                    <img src="assets/Media/image/Group 5.png" alt="">
+                </div>
+                <div class="cursor-pointer">
+                    <img src="assets/Media/image/Group 4-1.png" alt="">
+                </div>
+                <div class="cursor-pointer">
+                    <img src="assets/Media/image/Group 3.png" alt="">
+                </div>
+            </div>
+            <div class="flex items-center justify-between">
+                <div>
+                    <img src="assets/Media/image/price_sale.png" alt="">
+                </div>
+                <div class="flex items-center gap-2">
+                    <div (click)="saveOnBasket()" class="btn-1 flex items-center gap-2 bg-primary-200">
+                        <div><img class="h-[17px] w-[20px]" src="assets/Media/Svg/Vector-11.svg" alt=""></div>
+                        <div>Save for later</div>
+                    </div>
+                    <div class="btn-1 bg-brand-red text-white" onclick="my_modal_3.showModal()">Buy now</div>
+                </div>
+            </div>
+        </div>
+        <!-- detail phone section end -->
+
+        <!-- start banner info -->
+        <section class="banner_info border h-[72px] mt-2 bg-white border-primary-200 shadow-md flex justify-center items-center">
+            <div class="w-[481px] h-full flex justify-center items-center">
+                <div class="h-full w-[112px] flex items-center justify-center cursor-pointer border-b-[3px] border-brand-red text-brand-red">Description</div>
+                <div class="h-full w-[112px] flex items-center justify-center cursor-pointer">Reviews</div>
+                <div class="h-full w-[112px] flex items-center justify-center cursor-pointer">Specifications</div>
+                <div class="h-full w-[112px] flex items-center justify-center cursor-pointer">Return policies</div>
+            </div>
+        </section>
+        <div class="max-w-5xl mx-auto ">
+            <!-- end banner info -->
+            <h1 class="mt-8 mb-6 text-primary-900">High Performance A8 Chip</h1>
+            <p class="mb-2">
+                The all-new A8 chip in Apple iPhone 6 64GB HDD Smartphone is designed to be power efficient and the fastest yet. The A8
+                chip can sustain higher performances so you can play graphics-intensive games or enjoy video at higher frame rates for
+                longer than ever while powering a larger display and incredible new features.
+            </p>
+            <div class="mt-4">
+                <img src="assets/Media/image/image 3-2.png" alt="image 3-2">
+            </div>
+            <h1 class="mt-8 mb-6 text-primary-900">Touch ID</h1>
+            <p class="mb-2">
+                Touch the Apple iPhone 6 64GB HDD Smartphone and watch as the surrounding stainless steel ring detects your finger and
+                wakes the capacitive touch sensor.The software then reads the ridges of your fingerprint and finds the match to unlock
+                your phone.
+            </p>
+            <div class="mt-4">
+                <img src="assets/Media/image/finger.png" alt="image 3-2">
+            </div>
+            <h1 class="mt-8 mb-6 text-primary-900">iSight camera</h1>
+            <p class="mb-2">
+                Touch the Apple iPhone 6 64GB HDD Smartphone and watch as the surrounding stainless steel ring detects your finger and
+                wakes the capacitive touch sensor.The software then reads the ridges of your fingerprint and finds the match to unlock
+                your phone.
+            </p>
+            <div class="mt-4">
+                <img src="assets/Media/image/camera.png" alt="image 3-2">
+            </div>
+        </div>
+
+        <!-- Section New Arrival -->
+    <app-banner-title [listTitle]="['New arrivals','All new arrivals']"></app-banner-title>
+    <!-- Section New arrival end -->
+
+    <!-- galery best seller start -->
+    <section class="galery_best_seller min-h-[380px] mb-12">
+        <div class="grid grid-cols-5 z-10 grid-rows-1 gap-3 max-w-7xl mx-auto h-[361px]">
+            @for (item of listBestSale; track item.id) {
+                <app-best-seller [seller]="item"></app-best-seller>
+            } 
+        </div>
+    </section>
+    </main> 
+
+    <!-- start footer -->
+    <app-footer></app-footer>
+    <!-- end footer -->
+    <!-- overlay basket -->
+    <app-overlay-basket/>
+</div>
+
+
+<dialog id="my_modal_3" class="modal">
+    <div class="modal-box bg-white min-w-[800px]">
+      <form method="dialog">
+        <div class="modal_info flex items-center justify-between">
+            <div>
+                <h3 class="font-bold text-lg">Your cart</h3>
+            </div>
+            <div>
+                <button class="btn btn-sm btn-circle btn-ghost">✕</button>
+            </div>
+        </div>
+        <div class="body h-[244px] grid grid-cols-1 grid-rows-2 my-4">
+            <div class="border-b border-primary-200 grid grid-cols-2 grid-rows-1 p-2">
+                <div class="flex items-center gap-4">
+                    <img class="w-[104px] h-[104px]" src="assets/Media/image/Group 4-2.png" alt="image 3-2">
+                    <div>
+                        <h2>Apple iPhone 6 64GB HDD - 12 Months + Cover + Screen ...</h2>
+                        <p><span class="text-primary-600 inline-block mr-2">250,000  FCFA </span> <span class="inline-block">159,900  FCFA</span></p>
+                        <p class="text-brand-red font-normal">Remove from cart</p>
+                    </div>
+                </div>
+                <div class="flex items-start w-full">
+                    <div class="flex items-center justify-end gap-4 w-full">
+                        <div class="grid grid-cols-3 grid-rows-1 w-[126px] h-[36px]">
+                            <div (click)="reduceProduct_1()" class="border flex items-center justify-center cursor-pointer">
+                                <img class="w-[17.82px] h-[1.99px]" src="assets/Media/image/moins.svg" alt="image 3-2">
+                            </div>
+                            <div class="border flex items-center justify-center">{{ nbr_1() }}</div>
+                            <div (click)="addProduct_1()" class="border flex items-center justify-center cursor-pointer">
+                                <img class="w-[17.82px] h-[17.82px]" src="assets/Media/image/plus.svg" alt="image 3-2">
+                            </div>
+                        </div>
+                        <div class="style_price">{{ total_1() }} FCFA</div>
+                    </div>
+                </div>
+            </div>
+            <!-- 2 -->
+            <div class="border-b border-primary-200 grid grid-cols-2 grid-rows-1 p-2">
+                <div class="flex items-center gap-4">
+                    <img class="w-[104px] h-[104px]" src="assets/Media/image/Group 4-2.png" alt="image 3-2">
+                    <div>
+                        <h2>Apple iPhone 6 64GB HDD - 12 Months + Cover + Screen ...</h2>
+                        <p><span class="text-primary-600 inline-block mr-2">250,000  FCFA </span> <span class="inline-block">159,900  FCFA</span></p>
+                        <p class="text-brand-red font-normal">Remove from cart</p>
+                    </div>
+                </div>
+                <div class="flex items-center w-full">
+                    <div class="flex items-center justify-end gap-4 w-full">
+                        <div class="grid grid-cols-3 grid-rows-1 w-[126px] h-[36px]">
+                            <div class="border flex items-center justify-center cursor-pointer">
+                                <img class="w-[17.82px] h-[1.99px]" src="assets/Media/image/moins.svg" alt="image 3-2">
+                            </div>
+                            <div class="border flex items-center justify-center">{{ nbr_2() }}</div>
+                            <div (click)="addProduct_2()" class="border flex items-center justify-center cursor-pointer">
+                                <img class="w-[17.82px] h-[17.82px]" src="assets/Media/image/plus.svg" alt="image 3-2">
+                            </div>
+                        </div>
+                        <div class="style_price">{{ total_2() }} FCFA</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal_info flex items-end justify-end my-2">
+            <div>
+                <h3 class="font-bold text-lg">Total : <span class="text-brand-red">{{ total() }} FCFA</span></h3>
+            </div>
+        </div>
+        <div class="modal_info flex items-center justify-between">
+            <div>
+                <button class="btn-1 bg-primary-200">Continue shopping</button>
+            </div>
+            <div>
+                <button (click)="checkout()" class="btn-1 bg-brand-red text-white">Checkout</button>
+            </div>
+        </div>
+      </form>
+    </div>
+</dialog>

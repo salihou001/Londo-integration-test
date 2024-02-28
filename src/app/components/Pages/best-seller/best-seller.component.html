@@ -1,0 +1,51 @@
+<div (click)="sendPhone()" (mouseenter)="toggleBottom()" (mouseleave)="toggleBottom()" class="galery border border-primary-200 min-h-[400px] py-1 shadow-md bg-white hover:bg-primary-200 cursor-pointer">
+    <div class="galery_image h-[50%] p-2">
+        <img class="h-full w-full" [src]="'assets/Media/image/'+seller.image+'.png'" alt="">
+    </div>
+    <div class="galery_info h-[50%] px-3">
+        @if(seller.info1){
+            <p>{{ seller.info1 }}</p>
+        }@else{
+            <p class="invisible">{{ seller.info1 }}</p>
+        }
+        @if(seller.info2){
+            <p class="min-h-[55px]">{{ seller.info2 }}</p>
+        }@else{
+            <p class="invisible">{{ seller.info2 }}</p>
+        }
+        <div class="flex items-center justify-between ">
+            <div class="galery_price my-1">
+                @if(seller.second_price != ''){
+                    <p class="text-brand-red">{{ seller.second_price }}</p>
+                }@else{
+                    <p class="text-brand-red invisible">{{ seller.second_price }}</p>
+                }
+                @if(seller.first_price != ''){
+                    <p class="text-primary-600">{{ seller.first_price }}</p>
+                }@else{
+                    <p class="text-primary-600 invisible">{{ seller.first_price }}</p>
+                }
+            </div>
+            @if(seller.reduction != 0){
+                <div class="border border-brand-red btn_new text-brand-red">{{ seller.reduction }}%</div>
+            }@else{
+                <div class="border border-brand-red btn_new text-brand-red invisible">{{ seller.reduction }}%</div>
+            }
+            
+        </div>
+        @if(seller.first_best_seller){
+            <div class="toggleBottom">
+                <div class="start flex items-center gap-3 mb-2">
+                    <div class="start_icon">
+                        <img src="assets/Media/image/Group 16.png" alt="">
+                    </div>
+                    <div class="start_text text-primary-900 whitespace-nowrap">4.0 (36 reviews)</div>
+                </div>
+                <div class="bouton grid grid-cols-2 grid-rows-1 w-full">
+                    <div class="bouton_buy btn-1 text-white bg-brand-red">Buy now</div>
+                    <div class="bouton_more btn-1 text-[#5C5C73] bg-primary-100">Know more</div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

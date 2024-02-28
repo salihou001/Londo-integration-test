@@ -1,0 +1,19 @@
+<div class="overlay_basket h-screen min-w-[25%] fixed z-50 top-0 right-0 translate-x-[100%]">
+    <div class="relative w-full h-full border bg-primary-100 border-l border-primary-200 shadow-md">
+        <div class="header_overlay relative p-2 min-h-full w-full">
+            <div (click)="toggleSideBasket()" class="absolute p-2 border hover:bg-primary-200 border-primary-200 rounded-full mt-2 flex items-center justify-center cursor-pointer">
+                <img class="w-[20.74px] h-[20.77px]" src="assets/Media/Svg/round-arrow_back_ios-24px.svg" alt="">
+            </div>
+            <div class="title mt-[18%] w-full border-t border-primary-200 pl-10 pt-4 font-extrabold">My Basket</div>
+            @for(item of listBasket; track item){
+                <app-basket-item />
+            }
+            <div class="absolute bottom-5 w-full">
+                <div class="h-[10%] border-t border-primary-200 min-w-full flex items-center justify-between mx-8 text-xl font-extrabold">
+                    <div>Total</div>
+                    <div class="pr-16 text-brand-red">59,900 FCFA</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
