@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { MenuItems } from '../../models/menu-items.model';
 import { MenuDetail } from '../../models/menu-detail.model';
 import { NewArrival } from '../../models/new-arrival.model';
@@ -13,7 +13,8 @@ import { OurServiceComponent } from '../../components/Pages/our-service/our-serv
 import { HeaderComponent } from '../../components/Pages/header/header.component';
 import { FooterComponent } from '../../components/Pages/footer/footer.component';
 import { SallerServiceService } from '../../services/saller-service.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import gsap from 'gsap';
 import { OverlayBasketComponent } from '../../components/Core/overlay-basket/overlay-basket.component';
 
 @Component({
@@ -33,9 +34,21 @@ import { OverlayBasketComponent } from '../../components/Core/overlay-basket/ove
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   router = inject(Router)
   sallerService = inject(SallerServiceService)
+  activatedRoute=inject(ActivatedRoute);
+  
+  compteur_img=0
+  ngOnInit(): void {
+    this.sallerService.toggle_1 = 0
+    this.activatedRoute.fragment.subscribe((fragment) => {
+      if (fragment) {
+        document.getElementById(fragment)?.scrollIntoView();
+      }
+    });
+  }
+
   listItems: Array<MenuItems>=[
     { id: 1,icon: 'Vector-2',url: 'smartphone',name: 'Smartphones'},
     { id: 2,icon: 'Vector-3',url: 'accesoire',name: 'Accesoires'},
@@ -53,16 +66,15 @@ export class HomeComponent {
   ]
   listBestSeller: Array<BestSeller> = [
     {id:1,image: 'image 2-1',info1: 'Xiaomi',info2: 'Redmi 6A Dual SIM 16GB HDD - 2GB RAM - Gold- 12 Months ...',first_price: '99,900', second_price: '59,900', reduction: 40, first_best_seller: true},
-    {id:2,image: 'image 3-1',info1: 'UMIDIGI',info2: 'C Note Dual SIM 32GB HDD - 3GB RAM - 13MP - Gold - 12 Months',first_price: '99,900', second_price: '66,000', reduction: 33, first_best_seller: false},
-    {id:3,image: 'imgNew',info1: 'Orange',info2: 'Rise 53 Dual SIM 8GB HDD - White - 12 Months',first_price: '48,000', second_price: '29,900  FCFA', reduction: 38, first_best_seller: false},
-    {id:4,image: 'image 2_t',info1: 'Apple',info2: 'iPhone 8 64GB HDD - Gold',first_price: '', second_price: '490,000', reduction: 0, first_best_seller: false},
-    {id:5,image: 'imageNew_2',info1: 'Samsung',info2: 'Galaxy S7 Edge 32GB HDD - 4GB RAM - Gold - 12 Months + Cover...',first_price: '250,000  FCFA', second_price: '184,900', reduction: 38, first_best_seller: false},
+    {id:2,image: 'image 3-1',info1: 'UMIDIGI',info2: 'C Note Dual SIM 32GB HDD - 3GB RAM - 13MP - Gold - 12 Months',first_price: '99,900', second_price: '66,000', reduction: 33, first_best_seller: true},
+    {id:3,image: 'imgNew',info1: 'Orange',info2: 'Rise 53 Dual SIM 8GB HDD - White - 12 Months',first_price: '48,000', second_price: '29,900  FCFA', reduction: 38, first_best_seller: true},
+    {id:4,image: 'image 2_t',info1: 'Apple',info2: 'iPhone 8 64GB HDD - Gold',first_price: '', second_price: '490,000', reduction: 0, first_best_seller: true},
+    {id:5,image: 'imageNew_2',info1: 'Samsung',info2: 'Galaxy S7 Edge 32GB HDD - 4GB RAM - Gold - 12 Months + Cover...',first_price: '250,000  FCFA', second_price: '184,900', reduction: 38, first_best_seller: true},
   ]
   listBestSale: Array<BestSeller> = [
     {id:2,image: 'image 3-1',info1: 'UMIDIGI',info2: 'C Note Dual SIM 32GB HDD - 3GB RAM - 13MP - Gold - 12 Months',first_price: '99,900', second_price: '66,000', reduction: 33, first_best_seller: false},
     {id:2,image: 'image 3-1',info1: 'UMIDIGI',info2: 'C Note Dual SIM 32GB HDD - 3GB RAM - 13MP - Gold - 12 Months',first_price: '99,900', second_price: '66,000', reduction: 33, first_best_seller: false},
     {id:3,image: 'imgNew',info1: 'Orange',info2: 'Rise 53 Dual SIM 8GB HDD - White - 12 Months',first_price: '48,000', second_price: '29,900  FCFA', reduction: 38, first_best_seller: false},
-    // {id:4,image: 'image 2_t',info1: 'Apple',info2: 'iPhone 8 64GB HDD - Gold',first_price: '', second_price: '490,000', reduction: 0, first_best_seller: false},
     {id:5,image: 'imageNew_2',info1: 'Samsung',info2: 'Galaxy S7 Edge 32GB HDD - 4GB RAM - Gold - 12 Months + Cover...',first_price: '250,000  FCFA', second_price: '184,900', reduction: 38, first_best_seller: false},
     {id:5,image: 'imageNew_2',info1: 'Samsung',info2: 'Galaxy S7 Edge 32GB HDD - 4GB RAM - Gold - 12 Months + Cover...',first_price: '250,000  FCFA', second_price: '184,900', reduction: 38, first_best_seller: false},
   ]
@@ -76,6 +88,190 @@ export class HomeComponent {
   // 
   getPhone(phone:BestSeller){
     this.sallerService.phone = phone;
-    this.router.navigate(['smartphone']);
+    this.router.navigate(['smartphone'],{fragment: 'super'});
+  }
+  prevuisImage(){
+    const TL = gsap.timeline();
+    if(this.compteur_img === 1){
+      TL
+        .to('.rows',{
+          x:'*',
+          duration: .5,
+          ease: 'Since.in'
+        })
+        .to('.li_one',{
+          opacity:1,
+          duration: .3,
+          ease: 'Since.in'
+        },"<")
+        .to('.li_two',{
+          opacity:.5,
+          duration: .3,
+          ease: 'Since.in'
+        },"<")
+        this.compteur_img--
+    }else{
+      if(this.compteur_img === 2){
+        TL
+        .to('.rows',{
+          x:'-100%',
+          duration: .5,
+          ease: 'Since.in'
+        })
+        .to('.li_two',{
+          opacity:1,
+          duration: .3,
+          ease: 'Since.in'
+        },"<")
+        .to('.li_tree',{
+          opacity:.5,
+          duration: .3,
+          ease: 'Since.in'
+        },"<")
+        this.compteur_img--
+      }else{
+        if(this.compteur_img === 3){
+          TL
+          .to('.rows',{
+            x:'-200%',
+            duration: .5,
+            ease: 'Since.in'
+          })
+          .to('.li_tree',{
+            opacity:1,
+            duration: .3,
+            ease: 'Since.in'
+          },"<")
+          .to('.li_four',{
+            opacity:.5,
+            duration: .3,
+            ease: 'Since.in'
+          },"<")
+          this.compteur_img--
+        }else{
+          if(this.compteur_img === 4){
+            TL
+            .to('.rows',{
+              x:'-300%',
+              duration: .5,
+              ease: 'Since.in'
+            })
+            .to('.li_four',{
+              opacity:1,
+              duration: .3,
+              ease: 'Since.in'
+            },"<")
+            .to('.li_five',{
+              opacity:.5,
+              duration: .3,
+              ease: 'Since.in'
+            },"<")
+            this.compteur_img--
+          }else{
+            if(this.compteur_img === 5){
+              TL
+                .to('.rows',{
+                  x:'-400%',
+                  duration: .5,
+                  ease: 'Since.in'
+                })
+                .to('.li_four',{
+                  opacity:1,
+                  duration: .3,
+                  ease: 'Since.in'
+                },"<")
+                .to('.li_five',{
+                  opacity:.5,
+                  duration: .3,
+                  ease: 'Since.in'
+                },"<")
+                this.compteur_img--
+            } 
+          }
+        }
+      }
+    }
+  }
+  nextImage(){
+    const TL = gsap.timeline();
+    if(this.compteur_img === 0){
+      TL
+        .to('.rows',{
+          x:'-100%',
+          duration: .5,
+          ease: 'Since.in'
+        })
+        .to('.li_one',{
+          opacity:.5,
+          duration: .3,
+          ease: 'Since.in'
+        },"<")
+        .to('.li_two',{
+          opacity:1,
+          duration: .3,
+          ease: 'Since.in'
+        },"<")
+        this.compteur_img++
+    }else{
+      if(this.compteur_img === 1){
+        TL
+        .to('.rows',{
+          x:'-200%',
+          duration: .5,
+          ease: 'Since.in'
+        })
+        .to('.li_two',{
+          opacity:.5,
+          duration: .3,
+          ease: 'Since.in'
+        },"<")
+        .to('.li_tree',{
+          opacity:1,
+          duration: .3,
+          ease: 'Since.in'
+        },"<")
+        this.compteur_img++
+      }else{
+        if(this.compteur_img === 2){
+          TL
+            .to('.rows',{
+              x:'-300%',
+              duration: .5,
+              ease: 'Since.in'
+            })
+            .to('.li_tree',{
+              opacity:.5,
+              duration: .3,
+              ease: 'Since.in'
+            },"<")
+            .to('.li_four',{
+              opacity:1,
+              duration: .3,
+              ease: 'Since.in'
+            },"<")
+            this.compteur_img++
+        }else{
+          if(this.compteur_img === 3){
+            TL
+            .to('.rows',{
+              x:'-400%',
+              duration: .5,
+              ease: 'Since.in'
+            })
+            .to('.li_four',{
+              opacity:.5,
+              duration: .3,
+              ease: 'Since.in'
+            },"<")
+            .to('.li_five',{
+              opacity:1,
+              duration: .3,
+              ease: 'Since.in'
+            },"<")
+            this.compteur_img++
+          }
+        }
+      }
+    }
   }
 }

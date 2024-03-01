@@ -13,10 +13,12 @@ export class BestSellerComponent {
   serviceSaller = inject(SallerServiceService);
   @Input() seller!:BestSeller;
   @Output() phone = new EventEmitter();
-  sendPhone(){
+  sendPhone(){  
     this.phone.emit(this.seller);
   }
   toggleBottom(){
-    this.serviceSaller.toggleBottom();
+    this.serviceSaller.toggleBottom(this.seller);
   }
+
 }
+

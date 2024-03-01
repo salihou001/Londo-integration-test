@@ -3,11 +3,12 @@
         <label for="State">State</label>
     </div>
     <div class="w-full">
-        <select class="select select-bordered input w-full">
-            <option disabled selected>Pick one</option>
+        <select class="select select-bordered input w-full" autocomplete="off">
+            <option class="rouunded-none py-8 text-lg" disabled selected>Pick one</option>
             @for(item of listOptions; track item){
-                <option>{{item}}</option>
+                <option class="rouunded-none py-8 text-lg">{{item}}</option>
             }
+            <option class="rouunded-none py-8 text-lg">Other</option>
         </select>
     </div>
 </div>

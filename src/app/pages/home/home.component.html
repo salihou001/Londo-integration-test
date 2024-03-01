@@ -1,4 +1,4 @@
-<div class="super-container w-screen min-h-[1200px] flex flex-col items-center justify-between bg-primary-100 relative">
+<div id="super" class="super-container w-screen min-h-[1200px] flex flex-col items-center justify-between bg-primary-100 relative">
     <!-- start header -->
     <app-header></app-header>
     <!-- End header -->
@@ -18,16 +18,35 @@
                         </div>
                     </div>
                 </div>
-                <div class="h-full col-span-2 my-2 relative w-full">
-                    <img class="w-full h-full object-cover absolute top-0" src="assets/Media/image/image.png" alt="">
+                <div class="h-full col-span-2 my-2 relative w-full overflow-hidden">
+                    <div class="w-full h-full">
+                        <div class="rows max-w-full max-h-full flex">
+                            <div class="min-w-full min-h-full row-item">
+                                <img class="w-full h-full object-cover" src="assets/Media/image/image.png" alt="">
+                            </div>
+                            <div class="min-w-full min-h-full row-item">
+                                <img class="w-full h-full object-cover" src="assets/Media/image/pexels-tessy-agbonome-16367703.jpg" alt="">
+                            </div>
+                            <div class="min-w-full min-h-full row-item">
+                                <img class="w-full h-full object-cover" src="assets/Media/image/pexels-kindel-media-7007191.jpg" alt="">
+                            </div>
+                            <div class="min-w-full min-h-full row-item">
+                                <img class="w-full h-full object-cover" src="assets/Media/image/pexels-obsahovka-obsahovka-4449793.jpg" alt="">
+                            </div>
+                            <div class="min-w-full min-h-full row-item">
+                                <img class="w-full h-full object-cover" src="assets/Media/image/pexels-gustavo-fring-4173116 (1).jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+
                     <div
                         class="overlay_next_previus z-10 flex items-center justify-between w-full absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]">
-                        <div
+                        <div (click)="prevuisImage()"
                             class="cursor-pointer previus bg-primary-100 p-2 rounded-r-md flex items-center justify-center">
                             <img class="w-[20.74px] h-[20.77px]" src="assets/Media/Svg/round-arrow_back_ios-24px.svg"
                                 alt="">
                         </div>
-                        <div
+                        <div (click)="nextImage()"
                             class="cursor-pointer next bg-primary-100 p-2 rounded-l-md flex items-center justify-center">
                             <img class="w-[20.74px] h-[20.77px]" src="assets/Media/Svg/round-arrow_back_ios-24px-1.svg"
                                 alt="">
@@ -35,11 +54,11 @@
                     </div>
                     <div class="overlay_bad absolute bottom-3 right-5">
                         <ul class="w-[212px] grid grid-cols-5 grid-rows-1 gap-2">
-                            <li class="h-[4px] bg-white opacity-[70%]"></li>
-                            <li class="h-[4px] bg-white opacity-[70%]"></li>
-                            <li class="h-[4px] bg-white opacity-[70%]"></li>
-                            <li class="h-[4px] bg-white opacity-[70%]"></li>
-                            <li class="h-[4px] bg-white opacity-[70%]"></li>
+                            <li class="h-[4px] bg-white opacity-[50%] li_one"></li>
+                            <li class="h-[4px] bg-white opacity-[50%] li_two"></li>
+                            <li class="h-[4px] bg-white opacity-[50%] li_tree"></li>
+                            <li class="h-[4px] bg-white opacity-[50%] li_four"></li>
+                            <li class="h-[4px] bg-white opacity-[50%] li_five"></li>
                         </ul>
                     </div>
                 </div>
@@ -66,6 +85,7 @@
                 </div>
             </div>
         </div>
+
         <div class="h-[20%] bg-white w-full mt-5 grid grid-cols-6 grid-rows-1 border border-primary-200 shadow-md p-3">
             <div class=" px-4 py-1.5 border-r border-primary-200 flex items-center justify-center"><img
                     class="w-[32.57px] h-[40px]" src="assets/Media/Svg/apple-1.svg" alt=""></div>
@@ -241,5 +261,5 @@
     <app-footer></app-footer>
     <!-- end footer -->
     <!-- overlay basket -->
-    <app-overlay-basket/>
+    <app-overlay-basket />
 </div>

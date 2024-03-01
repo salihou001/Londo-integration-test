@@ -43,7 +43,7 @@ export class HeaderComponent {
     const listUrl = ['smartphone','accesoire','tablet','sale'];
     if(listUrl.includes(url)){
       if(url === 'smartphone'){
-        this.router.navigate([url]);
+        this.router.navigate([url],{fragment: 'super'});
         this.compteur=0
         this.toggleMenu();
       }
@@ -51,7 +51,7 @@ export class HeaderComponent {
   }
   //
   goHome(){
-    this.router.navigate(['']);
+    this.router.navigate([''],{fragment: 'super'});
     this.toggleMenu();
   }
   // 

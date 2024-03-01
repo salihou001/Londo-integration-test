@@ -1,7 +1,5 @@
 import { Component} from '@angular/core';
 import { FormControl, FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterOutlet } from '@angular/router';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { NbSidebarModule, NbLayoutModule, NbButtonModule, NbUserModule, NbSearchModule, NbIconModule, NbMenuItem, NbCardComponent, NbCardBackComponent, NbCardModule, NbMenuModule, NbInputModule, NbFormFieldComponent, NbToggleModule} from '@nebular/theme';
@@ -21,10 +19,7 @@ import { NbSidebarModule, NbLayoutModule, NbButtonModule, NbUserModule, NbSearch
     NbCardModule,
     NbMenuModule,
     NbInputModule,
-    NbToggleModule,
-    // BrowserAnimationsModule,
-    // // FormsModule,
-    // // BrowserModule,
+    NbToggleModule
     ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

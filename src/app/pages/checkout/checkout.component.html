@@ -1,4 +1,4 @@
-<div class="w-screen h-screen bg-white overflow-hidden">
+<div class="w-screen h-screen bg-white overflow-hidden" id="super">
     <!-- start Header -->
     <div class="header-top w-full h-[8%] border border-primary-200 shadow-md">
         <div class="flex items-center justify-between h-full max-w-7xl mx-auto">
@@ -9,7 +9,7 @@
                 <span class="inline-block text-black">Checkout</span>
             </div>
             <div class="header-top__right flex items-center grid grid-cols-3 grid-rows-1 w-[500px]">
-                <div class="flex items-center justify-end">
+                <div class="flex items-center justify-end cursor-pointer">
                     <div class="flex items-center justify-between p-2">
                         <img class="cursor-pointer" src="assets/Media/Svg/phone.svg" alt="" />
                     </div>
@@ -18,7 +18,7 @@
                         <h2>+242 06 908 3535</h2>
                     </div>
                 </div>
-                <div class="flex items-center justify-end">
+                <div class="flex items-center justify-end cursor-pointer">
                     <div class="flex items-center gap-2">
                         <div>
                             <img class="cursor-pointer" src="assets/Media/Svg/secure.svg" alt="" />
@@ -26,7 +26,7 @@
                         <div>Secure payment</div>
                     </div>
                 </div>
-                <div class="flex items-center justify-end">
+                <div class="flex items-center justify-end cursor-pointer">
                     <div class="flex items-center gap-2">
                         <div>
                             <img class="cursor-pointer" src="assets/Media/Svg/loader.svg" alt="" />
@@ -43,7 +43,7 @@
     <main class="w-full h-[92%]">
         <div class="max-w-7xl mx-auto grid grid-cols-2 grid-rows-1 gap-8 h-full">
             <div class="form mt-8">
-                <h1 class="pt-4 text-primary-900 contact flex items-center gap-1">
+                <h1 class=" pt-4 text-primary-900 contact flex items-center gap-1">
                     <span class="inline-block succes_1 hidden">
                         <img src="assets/Media/image/succes.png" alt="image 3-2">
                     </span>
@@ -51,7 +51,7 @@
                 </h1>
                 <!-- login or sign bloc -->
                 <p class="user_info hidden">Franck Libam, +243 336 364 833, franck&gmail.com <span
-                        class="text-brand-red cursor-pointer" (click)="prevuisStep()">Edit info</span></p>
+                        class="text-brand-red cursor-pointer underline edit" (click)="prevuisStep()">Edit info</span></p>
                 <section class="logins min-h-[250px] w-full">
                     <div class="flex items-center justify-start gap-2 my-4">
                         <button (click)="toggleModeNewUser()" class="btn-user new_user bg-[#FCEDEE] text-brand-red">I’m
@@ -68,11 +68,11 @@
                                 </div>
                                 <div class="w-full">
                                     <!-- password -->
-                                    <app-input-text [name]="'password'" [label]="'Password'" [entity]="entity" />
+                                    <app-input-password [name]="'password'" [label]="'Password'" [entity]="entity" />
                                 </div>
                                 <div class="login_forgot flex items-center gap-4 mt-6">
                                     <div>
-                                        <div (click)="goToLogin()" class="btn-1 log">Log in</div>
+                                        <div (click)="login()" class="btn-1 log">Log in</div>
                                     </div>
                                     <div class="text-brand-red border-b border-primary-300 cursor-pointer">Forgot
                                         password</div>
@@ -101,7 +101,7 @@
                                     </div>
                                 </div>
                                 <!-- Telephone -->
-                                <app-input-text [name]="'telephone'" [label]="'Telephone'" [entity]="entity" />
+                                <app-input-text [name]="'phone'" [label]="'Telephone'" [entity]="entity" />
                                 <!-- Email and password -->
                                 <div class="grid grid-cols-2 grid-rows-1 w-full gap-4">
                                     <div class="w-full">
@@ -110,7 +110,7 @@
                                     </div>
                                     <div class="w-full">
                                         <!-- Password -->
-                                        <app-input-text [name]="'password'" [label]="'Password'" [entity]="entity" />
+                                        <app-input-password [name]="'password'" [label]="'Password'" [entity]="entity" />
                                     </div>
                                 </div>
                                 <!-- bouton register -->
@@ -133,7 +133,7 @@
                     <span>2. Address and delivery</span>
                 </h1>
                 <p class="address_info hidden">Pickup station, Point Relais Chronotys - Biyem-Assi, Descente Tam-Tam à
-                    côté d’Express Union <span class="text-brand-red cursor-pointer" (click)="prevuisStep()">Edit info</span></p>
+                    côté d’Express Union <span class="text-brand-red cursor-pointer underline edit" (click)="prevuisStep()">Edit info</span></p>
                 <section class="address_delivery min-h-[400px] hidden">
                     <h1 class="text-primary-900 mt-4">How do you want your order delivered?</h1>
                     <p class="flex items-center gap-2 mt-3">
@@ -151,16 +151,17 @@
                             <!-- Region -->
                             <app-input-select [name]="'Region'" [listOptions]="['Littoral','Centre']" />
                         </div>
-
-                        <div class="w-full mt-2">
+                        <!-- Adresse -->
+                        <app-input-text-area [name]="'address'" [entity]="sallerService.user" [label]="'Adresse'" />
+                        <!-- <div class="w-full mt-2">
                             <div>
                                 <label for="Region">Address</label>
                             </div>
                             <textarea placeholder="Bio"
                                 class="input w-full min-h-[70px] textarea textarea-bordered textarea-sm"></textarea>
-                        </div>
+                        </div> -->
                         <div class="register_btn flex items-center justify-end">
-                            <div (click)="nextStep()"
+                            <div (click)="toPayement()"
                                 class="w-[45%] border mt-4 flex items-center justify-center btn-1 bg-[#F4A5A8] text-white">
                                 Proceed to next step
                             </div>
@@ -168,7 +169,7 @@
                     </form>
                 </section>
                 <!--  -->
-                <h1 class="pt-4 text-primary-900 contact flex items-center gap-1">
+                <h1 class="title_3 pt-4 text-primary-900 payement flex items-center gap-1">
                     <span class="inline-block succes_3 hidden">
                         <img src="assets/Media/image/succes.png" alt="image 3-2">
                     </span>
@@ -181,7 +182,7 @@
                                 <div>
                                     <label class="label cursor-pointer">
                                         <input (click)="modeCash()" type="radio" name="radio-10"
-                                            class="radio checked:bg-red-500" checked />
+                                            class="radio checked:bg-red-500 border-primary-400" checked />
                                     </label>
                                 </div>
                                 <div class="flex items-center gap-2 font-bold">
@@ -209,7 +210,7 @@
                                 <div>
                                     <label class="label cursor-pointer">
                                         <input (click)="modeMtn()" type="radio" name="radio-10"
-                                            class="radio checked:bg-red-500" />
+                                            class="radio checked:bg-red-500 border-primary-400" />
                                     </label>
                                 </div>
                                 <div class="flex items-center gap-2 font-bold">
@@ -247,7 +248,7 @@
                                         </div>
                                     </div>
                                     <div class="flex items-end justify-end">
-                                        <div (click)="nextStep()"
+                                        <div (click)="finalStep()"
                                             class="w-[50%] border mt-4 flex items-center justify-center btn-1 bg-brand-red text-white">
                                             Confirm order
                                         </div>
@@ -259,33 +260,40 @@
                 </section>
             </div>
 
-            <div class="mt-8">
-                <div class="blog border border-primary-200">
+            <div class="mt-8 w-full">
+                <div class="blog border border-primary-200 w-full">
                     <div class="mx-4">
                         <app-banner-title [listTitle]="['Order summary','Edit order']"></app-banner-title>
                     </div>
-                    <div class="flex items-center border-b border-primary-200 p-4">
-                        <div class="h-full flex items-center gap-4">
-                            <img class="w-[104px] h-[104px]" src="assets/Media/image/Group 4-2.png" alt="image 3-2">
+                    <!-- @for (item of listSaleProduct; track item.id) {
+                        <app-product-sale-info [product]="item" />
+                    }  -->
+                    <div class="flex items-center border-b border-primary-200 p-4 w-full">
+                        <div class="h-full flex items-center gap-4 w-full">
+                            <img onclick="my_modal_3.showModal()" class="w-[104px] h-[104px] cursor-pointer" src="assets/Media/image/Group 4-2.png" alt="image 3-2">
                             <div>
-                                <h2>Apple iPhone 6 64GB HDD - 12 Months + Cover + Screen ...</h2>
-                                <p><span class="text-primary-600 inline-block mr-2">250,000 FCFA </span> <span
-                                        class="inline-block">159,900 FCFA</span></p>
+                                <div>
+                                    <h2>Apple iPhone 6 64GB HDD - 12 Months + Cover + Screen ...</h2>
+                                    <p><span class="text-primary-600 inline-block mr-2">250,000 FCFA </span> <span
+                                            class="inline-block">159,900 FCFA</span></p>
+                                </div>
                                 <p class="text-brand-red font-normal flex items-center justify-between mt-4"><span
-                                        class="inline-block">1 pcs</span><span class="inline-block">159,900 FCFA</span>
+                                        class="inline-block">{{ sallerService.nbr_1() }} pcs</span><span class="inline-block">{{ sallerService.total_1() }} FCFA</span>
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div class="flex items-center border-b border-primary-200 p-4">
                         <div class="h-full flex items-center gap-4">
-                            <img class="w-[104px] h-[104px]" src="assets/Media/image/Group 4-2.png" alt="image 3-2">
+                            <img onclick="my_modal_3.showModal()" class="w-[104px] h-[104px] cursor-pointer" src="assets/Media/image/Group 4-1.png" alt="image 3-2">
                             <div>
-                                <h2>Apple iPhone 6 64GB HDD - 12 Months + Cover + Screen ...</h2>
-                                <p><span class="text-primary-600 inline-block mr-2">250,000 FCFA </span> <span
-                                        class="inline-block">159,900 FCFA</span></p>
+                                <div>
+                                    <h2>Apple iPhone 6 64GB HDD - 12 Months + Cover + Screen ...</h2>
+                                    <p><span class="text-primary-600 inline-block mr-2">250,000 FCFA </span> <span
+                                            class="inline-block">159,900 FCFA</span></p>
+                                </div>
                                 <p class="text-brand-red font-normal flex items-center justify-between mt-4"><span
-                                        class="inline-block">1 pcs</span><span class="inline-block">159,900 FCFA</span>
+                                        class="inline-block">{{ sallerService.nbr_2() }} pcs</span><span class="inline-block">{{ sallerService.total_2() }} FCFA</span>
                                 </p>
                             </div>
                         </div>
@@ -293,7 +301,7 @@
                     <div class="footer_blog p-3">
                         <div class="mx-4 flex items-center justify-between">
                             <div>Total: </div>
-                            <div>359,800 FCFA</div>
+                            <div class="text-extrabod text-brand-red">{{ sallerService.total() }} FCFA</div>
                         </div>
                     </div>
                 </div>
@@ -302,3 +310,19 @@
     </main>
     <!-- end main -->
 </div>
+
+<app-modal-basket/>
+<div class="loader hidden w-screen h-screen absolute top-[50%] left-[50%] z-50 bg-black opacity-[60%] -translate-x-[50%] -translate-y-[50%]">
+    <div class="relative w-full h-full flex items-center justify-center">
+        <div class="loading loading-spinner loading-lg inline-block w-[420px] h-[420px] text-success opacity-[100%] border-4 border-white"></div>
+    </div>
+</div>
+<div class="succes_payement hidden w-screen h-screen absolute top-[50%] left-[50%] z-50 bg-black opacity-[60%] -translate-x-[50%] -translate-y-[50%]">
+    <div class="relative w-full h-full flex items-center justify-center">
+        <div role="alert" class="alert alert-success">
+            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <span>Payement Successfully!</span>
+        </div>
+    </div>
+</div>
+

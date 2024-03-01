@@ -1,30 +1,57 @@
-import { Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, inject } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BannerTitleComponent } from '../../components/Pages/banner-title/banner-title.component';
 import { InputTextComponent } from '../../components/Forms/input-text/input-text.component';
 import { InputSelectComponent } from '../../components/Forms/input-select/input-select.component';
 import { SallerServiceService } from '../../services/saller-service.service';
 import { User } from '../../models/user.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ModalBasketComponent } from '../../components/Core/modal-basket/modal-basket.component';
+import { ProductSaleInfoComponent } from '../../components/Pages/product-sale-info/product-sale-info.component';
+import { productInfo } from '../../models/product-info.model';
+import gsap from 'gsap';
+import { InputPasswordComponent } from '../../components/Forms/input-password/input-password.component';
+import { InputTextAreaComponent } from '../../components/Forms/input-text-area/input-text-area.component';
 
 @Component({
   selector: 'app-checkout',
   standalone: true,
-  imports: [BannerTitleComponent,InputTextComponent,InputSelectComponent],
+  imports: [
+    BannerTitleComponent,
+    InputTextComponent,
+    InputSelectComponent,
+    HttpClientModule,
+    ModalBasketComponent,
+    ProductSaleInfoComponent,
+    InputPasswordComponent,
+    InputTextAreaComponent
+  ],
+  providers: [HttpClient],
   templateUrl: './checkout.component.html',
   styleUrl: './checkout.component.scss'
 })
-export class CheckoutComponent {
-  separateur = 1;
+export class CheckoutComponent implements OnInit {
   step = 0
-  router = inject(Router)
+  activatedRoute=inject(ActivatedRoute);
+  router = inject(Router);
   sallerService = inject(SallerServiceService);
   entity!:User;
   http = inject(HttpClient);
+  listSaleProduct!:productInfo[];
 
+  ngOnInit(): void {
+    this.listSaleProduct = this.sallerService.listSaleProduct;
+    this.sallerService.listSaleProduct[0].quantity = this.sallerService.nbr_1();
+    this.sallerService.listSaleProduct[1].quantity = this.sallerService.nbr_2();
 
+    this.activatedRoute.fragment.subscribe((fragment) => {
+      if (fragment) {
+        document.getElementById(fragment)?.scrollIntoView();
+      }
+    });
+  }
   goHome(){
-    this.router.navigate(['']);
+    this.router.navigate([''],{fragment: 'super'});
   }
   //
   toggleModeOldUser(){
@@ -60,8 +87,10 @@ export class CheckoutComponent {
     let address_delivery = document.querySelector('.address_delivery') as HTMLElement;
     let success_1 = document.querySelector('.succes_1') as HTMLElement;
     let success_2 = document.querySelector('.succes_2') as HTMLElement;
+    let success_3 = document.querySelector('.succes_3') as HTMLElement;
     let payement_method = document.querySelector('.payement_method') as HTMLElement;
     let address_info = document.querySelector('.address_info') as HTMLElement;
+    let title_3 = document.querySelector('.title_3') as HTMLElement;
   
     if(this.step === 0){
       login.style.display = 'none';
@@ -78,6 +107,12 @@ export class CheckoutComponent {
         address_delivery.style.display = 'none';
         success_2.style.display = 'block';
         this.step++;
+      }else{
+        if(this.step === 2){
+          payement_method.style.display = 'none';
+          success_3.style.display= 'block';
+          title_3.style.color= '#14CB04';
+        }
       }
     }
   }
@@ -91,15 +126,19 @@ export class CheckoutComponent {
     let success_1 = document.querySelector('.succes_1') as HTMLElement;
     let success_2 = document.querySelector('.succes_2') as HTMLElement;
     let payement_method = document.querySelector('.payement_method') as HTMLElement;
-    // let address_info = document.querySelector('.address_info') as HTMLElement;
+    let payement = document.querySelector('.payement') as HTMLElement;
+    let success_3 = document.querySelector('.succes_3') as HTMLElement;
+    let address_info = document.querySelector('.address_info') as HTMLElement;
 
     if(this.step === 2){
       login.style.display = 'none';
       user_info.style.display = 'block';
       address.style.color = '#0000';
       payement_method.style.display = 'none';
-      address_delivery.style.display = 'none';
-      payement_method.style.display = 'none';
+      address.style.display = 'none';
+      address_info.style.display = 'none';
+      success_3.style.display = 'none';
+      payement.style.color = '#000';
       address_delivery.style.display = 'block';
       success_2.style.display = 'none';
       this.step--;
@@ -108,6 +147,7 @@ export class CheckoutComponent {
         login.style.display = 'block';
         user_info.style.display = 'none';
         address_delivery.style.display = 'none';
+        address_info.style.display = 'none';
         contact.style.color = '#000';
         success_1.style.display = 'none';
         this.step--;
@@ -129,13 +169,110 @@ export class CheckoutComponent {
     mtn.style.display = 'block';
   }
   // 
-  goToLogin(){
-    const data = this.sallerService.user;
-    this.http.post("localhost:3000/auth/signUp",data).subscribe((data)=>{
-      console.log("Envoie des données de l'utilisateur reussit");
+  async goToLogin(){
+    const data = this.sallerService.user as User;
+    const { firstName, lastName, phone, email, password } = data;
+    console.log(data)
+
+    await this.http.post("/auth/signUp",{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
+      },
+      body: JSON.stringify({ 
+        firstName,
+        lastName,
+        phone, 
+        email, 
+        password 
+      }),
+      
+    }).subscribe((data)=>{
+      console.log(data);
+      if(data){
+        this.toggleModeNewUser();
+      }
     },(error)=>{
-      console.log("Erreur lors de l'envoie de données")
+      console.log(error);
+      alert('erreur lors de l enregistrement')
     })
-    // this.nextStep()
+  }
+  // 
+  async login(){
+    // const data = this.sallerService.user as User;
+    // const { email, password } = data;
+    // console.log({ email, password })
+    
+    // await this.http.post("/auth/signIn", {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
+    //   },
+    //   body: JSON.stringify({
+    //     email,
+    //     password
+    //   }),
+    // }).subscribe((data)=>{
+    //   console.log(data);
+    //   if(data != 'User not found'){
+    //     this.toggleModeNewUser();
+    //     this.nextStep();
+    //   }
+    // },(error)=>{
+    //   console.log(error);
+    //   alert('erreur lors du login')
+    // })
+    let verdict = this.toggleLoader();
+
+    if(verdict){
+      setTimeout((verdict)=>{
+        this.nextStep();
+      },4000)
+    }
+  }
+
+  toPayement(){
+    let verdict = this.toggleLoader();
+
+    if(verdict){
+      setTimeout((verdict)=>{
+        this.nextStep();
+      },4000)
+    }
+  }
+  // 
+  toggleLoader(){
+    const TL = gsap.timeline();
+    TL
+      .to('.loader',{
+        display: 'block',
+        duration: .1,
+        ease: 'power4.out'
+      })
+      .to('.loader',{
+        display: 'none',
+        duration: .1,
+        delay: 4,
+        ease: 'power4.out'
+      })
+      return true;
+  }
+
+  finalStep(){
+    let verdict = this.toggleLoader();
+
+    if(verdict){
+      setTimeout((verdict)=>{
+        this.nextStep();
+      },4000)
+    }
+    gsap.to('.edit',{
+      display: 'none',
+      duration: .1,
+      delay:4,
+      ease: 'Since.out'
+    })
   }
 }

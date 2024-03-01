@@ -1,114 +1,85 @@
 <header class="header w-screen bg-white">
-    <div class="header-top w-full">
-      <div
-        class="flex items-center justify-between h-full w-full max-w-7xl mx-auto"
-      >
-        <div class="header-top__left">
-          <img
-            (click)="goHome()"
-            class="cursor-pointer"
-            src="assets/Media/Svg/image.svg"
-            alt=""
-          />
+  <div class="header-top w-full">
+    <div class="flex items-center justify-between h-full w-full max-w-7xl mx-auto">
+      <div class="header-top__left">
+        <img (click)="goHome()" class="cursor-pointer" src="assets/Media/Svg/image.svg" alt="" />
+      </div>
+      <div class="header-top__right h-full flex items-center">
+        <div class="first h-full w-[200px] flex items-center justify-center">
+          <p class="whi">+242 06 908 3535</p>
         </div>
-        <div class="header-top__right h-full flex items-center">
-          <div class="first h-full w-[200px] flex items-center justify-center">
-            <p class="whi">+242 06 908 3535</p>
-          </div>
-          <div
-            class="second h-full w-[150px] border-l border-primary-200 flex items-center justify-center gap-2 text-primary-900"
-          >
-            <div
-              class="flag_fr cursor-pointer flex items-center border-b-2 border-brand-red gap-1"
-            >
-              <div class="flag_fr_logo">
-                <img src="assets/Media/Svg/flag-fr-svgrepo-com.svg" alt="" />
-              </div>
-              <div class="flag_fr_text">FR</div>
+        <div
+          class="second h-full w-[150px] border-l border-primary-200 flex items-center justify-center gap-2 text-primary-900">
+          <div class="flag_fr cursor-pointer flex items-center border-b-2 border-brand-red gap-1">
+            <div class="flag_fr_logo">
+              <img src="assets/Media/Svg/flag-fr-svgrepo-com.svg" alt="" />
             </div>
-            <div class="flag_en cursor-pointer flex items-center gap-1">
-              <div class="flag_fr_logo">
-                <img src="assets/Media/Svg/flag-gb-svgrepo-com.svg" alt="" />
-              </div>
-              <div class="flag_fr_text self-end">EN</div>
+            <div class="flag_fr_text">FR</div>
+          </div>
+          <div class="flag_en cursor-pointer flex items-center gap-1">
+            <div class="flag_fr_logo">
+              <img src="assets/Media/Svg/flag-gb-svgrepo-com.svg" alt="" />
             </div>
+            <div class="flag_fr_text self-end">EN</div>
           </div>
-          <div
-            class="third h-full w-[100px] border-l border-primary-200 flex flex-col items-center justify-center"
-          >
-            <p class="text-primary-500">Your location</p>
-            <p class="text-brand-red border-b border-primary-300 -ml-7">
-              Douala
-            </p>
-          </div>
+        </div>
+        <div class="third h-full w-[100px] border-l border-primary-200 flex flex-col items-center justify-center">
+          <p class="text-primary-500">Your location</p>
+          <p class="text-brand-red border-b border-primary-300 -ml-7">
+            Douala
+          </p>
         </div>
       </div>
     </div>
-    <div class="header-bottom bg-primary-800 w-full">
-      <div
-        class="grid grid-cols-4 grid-rows-1 h-full max-w-7xl mx-auto relative justify-between"
-      >
-        <div
-          (click)="toggleMenu()"
-          class="menus bg-primary-900 flex items-center justify-start gap-2 px-2.5 py-1.5"
-        >
-          <div class="cursor-pointer">
-            <img src="assets/Media/Svg/menu-burger-svgrepo-com.svg" alt="" />
-          </div>
-          <div class="text-white">Catalog</div>
+  </div>
+  <div class="header-bottom bg-primary-800 w-full">
+    <div class="grid grid-cols-4 grid-rows-1 h-full max-w-7xl mx-auto relative justify-between">
+      <div (click)="toggleMenu()" class="menus bg-primary-900 flex items-center justify-start gap-2 px-2.5 py-1.5">
+        <div class="cursor-pointer">
+          <img src="assets/Media/Svg/menu-burger-svgrepo-com.svg" alt="" />
         </div>
-        <div class="second col-span-2 px-3 py-1.5">
-          <div
-            class="w-full h-[40px] bg-primary-600 rounded-md flex items-center justify-between w-full pl-1.5"
-          >
-            <div class="w-[90%]">
-              <input
-                class="w-full bg-transparent outline-none pl-1 text-white text-xl"
-                type="text"
-              />
-            </div>
-            <div class="w-[10%]">
-              <img
-                class="w-[30px] h-[30px]"
-                src="assets/Media/Svg/round-search-24px.svg"
-                alt=""
-              />
-            </div>
+        <div class="text-white">Catalog</div>
+      </div>
+      <div class="second col-span-2 px-3 py-1.5">
+        <div class="w-full h-[40px] bg-primary-600 rounded-md flex items-center justify-between w-full pl-1.5">
+          <div class="w-[90%]">
+            <input class="w-full bg-transparent outline-none pl-1 text-white text-xl" type="text" />
+          </div>
+          <div class="w-[10%]">
+            <img class="w-[30px] h-[30px]" src="assets/Media/Svg/round-search-24px.svg" alt="" />
           </div>
         </div>
-        <div class="flex items-center gap-2">
-          <div class="account flex items-center w-full gap-2">
-            <div class="cursor-pointer account_icon">
-              <img src="assets/Media/Svg/Vector-1.svg" alt="" />
-            </div>
-            <div class="cursor-pointer account_text whitespace-nowrap">
-              Your account
-            </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <div class="account flex items-center w-full gap-2">
+          <div class="cursor-pointer account_icon">
+            <img src="assets/Media/Svg/Vector-1.svg" alt="" />
           </div>
-          <div (click)="toggleSideBasket()" class="account flex items-center justify-start w-full gap-2">
-            <div class="cursor-pointer account_icon relative">
-              <img class="absolute" src="assets/Media/image/Vector.png" alt="" />
-              @if(isSomething > 0){
-              <div class="badge absolute -top-1 -left-2 rounded-full w-[10px] border-none h-[10px] p-1 text-white bg-brand-red"></div>
-              }
-            </div>
-            <div class="cursor-pointer account_text whitespace-nowrap">
-              Your cart
-            </div>
+          <div class="cursor-pointer account_text whitespace-nowrap">
+            Your account
           </div>
         </div>
-        <div class="absolute top-[56px] min-h-[193px] w-[320px]">
-          <div
-            class="h-[193px] border bg-white z-50 border-primary-200 grid grid-cols-1 grid-rows-4 w-full toggle_menu"
-          >
-            @for (item of listItems; track item.id) {
-            <app-menu-items
-              [items]="item"
-              (url)="getUrl($event)"
-            ></app-menu-items>
+        <div (click)="toggleSideBasket()" class="account flex items-center justify-start w-full gap-2">
+          <div class="cursor-pointer account_icon relative">
+            <img class="absolute" src="assets/Media/image/Vector.png" alt="" />
+            @if(isSomething > 0){
+            <div
+              class="badge absolute -top-1 -left-2 rounded-full w-[10px] border-none h-[10px] p-1 text-white bg-brand-red">
+            </div>
             }
           </div>
+          <div class="cursor-pointer account_text whitespace-nowrap">
+            Your cart
+          </div>
+        </div>
+      </div>
+      <div class="absolute top-[56px] min-h-[193px] w-[320px]">
+        <div class="h-[193px] border bg-white z-50 border-primary-200 grid grid-cols-1 grid-rows-4 w-full toggle_menu">
+          @for (item of listItems; track item.id) {
+          <app-menu-items [items]="item" (url)="getUrl($event)"></app-menu-items>
+          }
         </div>
       </div>
     </div>
-  </header>
+  </div>
+</header>

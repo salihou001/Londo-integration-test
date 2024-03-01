@@ -1,0 +1,15 @@
+<div class="flex items-center border-b border-primary-200 p-4">
+    <div class="h-full flex items-center gap-4">
+        <img onclick="my_modal_3.showModal()" class="w-[104px] h-[104px] cursor-pointer" [src]="'assets/Media/image/'+(product?product.image:'Group 4-2')+'.png'" alt="image 3-2">
+        <div>
+            <div>
+                <h2>{{product.description}}</h2>
+                <p><span class="text-primary-600 inline-block mr-2">{{ product.firstPrice }} </span> <span
+                        class="inline-block">{{ product.secondPrice }}</span></p>
+            </div>
+            <p class="text-brand-red font-normal flex items-center justify-between mt-4"><span
+                    class="inline-block">{{ product.quantity }} pcs</span><span class="inline-block">{{ product.price }} FCFA</span>
+            </p>
+        </div>
+    </div>
+</div>

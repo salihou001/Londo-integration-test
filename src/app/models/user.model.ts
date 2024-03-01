@@ -1,7 +1,7 @@
 export class User{
     firstName?:string;
     lastName?:string;
-    telephone?:string;
+    phone?:string;
     email?:string;
     password?:string;
 }
