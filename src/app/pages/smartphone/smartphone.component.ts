@@ -30,8 +30,7 @@ export class SmartphoneComponent implements OnInit{
   phone!:BestSeller;
   ngOnInit(): void {
     this.phone = this.sallerService.phone;
-    this.sallerService.toggle_1 = 0
-
+    this.sallerService.toggle_1 = 1
     this.activatedRoute.fragment.subscribe((fragment) => {
       if (fragment) {
         document.getElementById(fragment)?.scrollIntoView();

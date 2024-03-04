@@ -174,7 +174,7 @@ export class CheckoutComponent implements OnInit {
     const { firstName, lastName, phone, email, password } = data;
     console.log(data)
 
-    await this.http.post("/auth/signUp",{
+    await this.http.post("http://localhost:3000/auth/signUp",{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -191,39 +191,38 @@ export class CheckoutComponent implements OnInit {
     }).subscribe((data)=>{
       console.log(data);
       if(data){
-        this.toggleModeNewUser();
+        this.toggleModeOldUser();
       }
     },(error)=>{
       console.log(error);
-      alert('erreur lors de l enregistrement')
     })
   }
   // 
   async login(){
-    // const data = this.sallerService.user as User;
-    // const { email, password } = data;
-    // console.log({ email, password })
+    const data = this.sallerService.user as User;
+    const { email, password } = data;
+    console.log({ email, password })
     
-    // await this.http.post("/auth/signIn", {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
-    //   },
-    //   body: JSON.stringify({
-    //     email,
-    //     password
-    //   }),
-    // }).subscribe((data)=>{
-    //   console.log(data);
-    //   if(data != 'User not found'){
-    //     this.toggleModeNewUser();
-    //     this.nextStep();
-    //   }
-    // },(error)=>{
-    //   console.log(error);
-    //   alert('erreur lors du login')
-    // })
+    await this.http.post("http://localhost:3000/auth/signIn", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
+      },
+      body: JSON.stringify({
+        email,
+        password
+      }),
+    }).subscribe((data)=>{
+      console.log(data);
+      if(data != 'User not found'){
+        this.toggleModeNewUser();
+        this.nextStep();
+      }
+    },(error)=>{
+      console.log(error);
+      // alert('erreur lors du login')
+    })
     let verdict = this.toggleLoader();
 
     if(verdict){

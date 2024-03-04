@@ -52,7 +52,6 @@ export class HeaderComponent {
   //
   goHome(){
     this.router.navigate([''],{fragment: 'super'});
-    this.toggleMenu();
   }
   // 
   toggleSideBasket(){
