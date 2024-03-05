@@ -42,8 +42,8 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.listSaleProduct = this.sallerService.listSaleProduct;
-    this.sallerService.listSaleProduct[0].quantity = this.sallerService.nbr_1();
-    this.sallerService.listSaleProduct[1].quantity = this.sallerService.nbr_2();
+    // this.sallerService.listSaleProduct[0].quantity = this.sallerService.nbr_1();
+    // this.sallerService.listSaleProduct[1].quantity = this.sallerService.nbr_2();
 
     this.activatedRoute.fragment.subscribe((fragment) => {
       if (fragment) {

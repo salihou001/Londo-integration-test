@@ -15,12 +15,12 @@
         }
         <div class="flex items-center justify-between ">
             <div class="galery_price my-1">
-                @if(seller.second_price != ''){
+                @if(seller.second_price){
                     <p class="text-brand-red">{{ seller.second_price }}</p>
                 }@else{
                     <p class="text-brand-red invisible">{{ seller.second_price }}</p>
                 }
-                @if(seller.first_price != ''){
+                @if(seller.first_price){
                     <p class="text-primary-600">{{ seller.first_price }}</p>
                 }@else{
                     <p class="text-primary-600 invisible">{{ seller.first_price }}</p>

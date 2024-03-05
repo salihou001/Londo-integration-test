@@ -278,7 +278,7 @@
                                             class="inline-block">159,900 FCFA</span></p>
                                 </div>
                                 <p class="text-brand-red font-normal flex items-center justify-between mt-4"><span
-                                        class="inline-block">{{ sallerService.nbr_1() }} pcs</span><span class="inline-block">{{ sallerService.total_1() }} FCFA</span>
+                                        class="inline-block">{{ 0 }} pcs</span><span class="inline-block">{{ 0 }} FCFA</span>
                                 </p>
                             </div>
                         </div>
@@ -293,7 +293,7 @@
                                             class="inline-block">159,900 FCFA</span></p>
                                 </div>
                                 <p class="text-brand-red font-normal flex items-center justify-between mt-4"><span
-                                        class="inline-block">{{ sallerService.nbr_2() }} pcs</span><span class="inline-block">{{ sallerService.total_2() }} FCFA</span>
+                                        class="inline-block">{{0}} pcs</span><span class="inline-block">{{ 0 }} FCFA</span>
                                 </p>
                             </div>
                         </div>
@@ -301,7 +301,7 @@
                     <div class="footer_blog p-3">
                         <div class="mx-4 flex items-center justify-between">
                             <div>Total: </div>
-                            <div class="text-extrabod text-brand-red">{{ sallerService.total() }} FCFA</div>
+                            <div class="text-extrabod text-brand-red">{{ sallerService.calcul_total() }} FCFA</div>
                         </div>
                     </div>
                 </div>
@@ -312,9 +312,11 @@
 </div>
 
 <app-modal-basket/>
+
+
 <div class="loader hidden w-screen h-screen absolute top-[50%] left-[50%] z-50 bg-black opacity-[60%] -translate-x-[50%] -translate-y-[50%]">
     <div class="relative w-full h-full flex items-center justify-center">
-        <div class="loading loading-spinner text-success inline-block w-[420px] h-[420px] text-success opacity-[100%] border-4 border-white"></div>
+        <div class="loading loading-spinner text-success inline-block w-[320px] h-[320px] text-success opacity-[100%] border-4 border-white"></div>
     </div>
 </div>
 <div class="succes_payement hidden w-screen h-screen absolute top-[50%] left-[50%] z-50 bg-black opacity-[60%] -translate-x-[50%] -translate-y-[50%]">

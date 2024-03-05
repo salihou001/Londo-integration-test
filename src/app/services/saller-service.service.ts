@@ -23,39 +23,13 @@ export class SallerServiceService {
     password: '',
     address: ''
   };
-  nbr_1 = signal(1);
-  prix_uni_1 = signal(159900);
-  nbr_2 = signal(1);
-  prix_uni_2 = signal(159900);
 
-  total_1 = computed(() => this.nbr_1() * this.prix_uni_1());
-  total_2 = computed(() => this.nbr_2() * this.prix_uni_2());
-  total = computed(() => this.total_1() + this.total_2());
+  total = 0
 
   listSaleProduct: productInfo[] = [
     { id: 1, description: 'Apple iPhone 6 64GB HDD - 12 Months + Cover + Screen ...', image: 'Group 4-2', firstPrice: 250000, secondPrice: 159900, quantity: 1, price: 1 },
     { id: 2, description: 'Apple iPhone 6 64GB HDD - 12 Months + Cover + Screen ...', image: 'Group 4-1', firstPrice: 150000, secondPrice: 100900, quantity: 1, price: 1 }
   ]
-
-  addProduct_1() {
-    this.nbr_1.update(nbr_1 => nbr_1 + 1);
-  }
-
-  reduceProduct_1() {
-    if (this.nbr_1() > 0) {
-      this.nbr_1.update(nbr_1 => nbr_1 - 1);
-    }
-  }
-
-  addProduct_2() {
-    this.nbr_2.update(nbr_2 => nbr_2 + 1);
-  }
-
-  reduceProduct_2() {
-    if (this.nbr_2() > 0) {
-      this.nbr_2.update(nbr_1 => nbr_1 - 1);
-    }
-  }
 
   checkout() {
     this.router.navigate(['checkout'])
@@ -128,6 +102,42 @@ export class SallerServiceService {
       return true;
     }else{
       return false;
+    }
+  }
+
+  addQuantityProduct(item:BestSeller){
+    // console.log(item.quantity)
+    if(item){
+      if(item.quantity){
+        item.quantity++;
+        this.total_price(item);
+      }
+    }
+  }
+
+  reduceQuantityProduct(item:BestSeller){
+    // console.log(item.quantity);
+    if(item){
+      if(item.quantity){
+        if(item.quantity > 1){
+          item.quantity--;
+        }
+        this.total_price(item);
+      }
+    }
+  }
+
+  total_price(item:BestSeller){
+    if(item.quantity && item.second_price){
+      item.total_price = item.quantity * item.second_price;
+    }
+  }
+
+  calcul_total(){
+    if(this.listPanier.length >0){
+      return this.listPanier.reduce((total,item)=> (item.total_price) ? total + item.total_price :0,0);
+    }else{
+      return 0;
     }
   }
 }

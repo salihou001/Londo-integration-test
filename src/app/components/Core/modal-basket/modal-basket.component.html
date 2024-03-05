@@ -1,5 +1,5 @@
 <dialog id="my_modal_3" class="modal">
-    <div class="modal-box bg-white min-w-[800px]">
+    <div class="modal-box min-w-[800px] bg-white h-fit p-2">
       <form method="dialog">
         <div class="modal_info flex items-center justify-between">
             <div>
@@ -9,39 +9,41 @@
                 <button class="btn btn-sm btn-circle btn-ghost">✕</button>
             </div>
         </div>
-        <div class="body h-[244px] grid grid-cols-1 grid-rows-2 my-4 max-h-[200px] overflow-y-scroll">
-            @for(sale of listPanier;track sale.id){
-                <div class="border-b border-primary-200 grid grid-cols-2 grid-rows-1 p-2 min-h-full">
-                    <div class="flex items-center gap-4">
-                        <img class="w-[104px] h-[104px]" [src]="'assets/Media/image/'+sale.image+'.png'" alt="image 3-2">
-                        <div>
-                            <h2>{{sale.info2}}</h2>
-                            <p><span class="text-primary-600 inline-block mr-2">{{sale.first_price}}  FCFA </span> <span class="inline-block">{{sale.second_price}} FCFA</span></p>
-                            <p class="text-brand-red font-normal cursor-pointer">Remove from cart</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center justify-center w-full">
-                        <div class="flex items-center justify-end gap-4 w-full">
-                            <div class="grid grid-cols-3 grid-rows-1 w-[126px] h-[36px]">
-                                <div (click)="reduceProduct(sale)" class="border flex items-center justify-center cursor-pointer">
-                                    <img class="w-[17.82px] h-[1.99px]" src="assets/Media/image/moins.svg" alt="image 3-2">
-                                </div>
-                                <div class="border flex items-center justify-center">{{ sallerService.nbr_1() }}</div>
-                                <div (click)="sallerService.addProduct_1()" class="border flex items-center justify-center cursor-pointer">
-                                    <img class="w-[17.82px] h-[17.82px]" src="assets/Media/image/plus.svg" alt="image 3-2">
-                                </div>
+        <div class="body grid grid-cols-1 grid-rows-2 my-4 w-full overflow-y-hidden">
+            <div class="w-full overflow-y-scroll max-h-[300px]">
+                @for(sale of listPanier;track sale.id){
+                    <div class="border-b border-primary-200 grid grid-cols-2 grid-rows-1 p-2">
+                        <div class="flex items-center gap-4">
+                            <img class="max-w-[84px] max-h-full object-cover" [src]="'assets/Media/image/'+sale.image+'.png'" alt="image 3-2">
+                            <div>
+                                <h2>{{sale.info2}}</h2>
+                                <p><span class="text-primary-600 inline-block mr-2 line-throught">{{sale.first_price}}  FCFA </span> <span class="inline-block">{{sale.second_price}} FCFA</span></p>
+                                <p (click)="removeItemSalle(sale)" class="text-brand-red font-normal cursor-pointer">Remove from cart</p>
                             </div>
-                            <div class="style_price">{{ sallerService.total_1() }} FCFA</div>
+                        </div>
+                        <div class="flex items-center justify-center w-full">
+                            <div class="flex items-center justify-end gap-4 w-full">
+                                <div class="grid grid-cols-3 grid-rows-1 w-[126px] h-[36px]">
+                                    <div (click)="sallerService.reduceQuantityProduct(sale)" class="border border-primary-200 flex items-center justify-center cursor-pointer">
+                                        <img class="w-[17.82px] h-[1.99px]" src="assets/Media/image/moins.svg" alt="image 3-2">
+                                    </div>
+                                    <div class="border border-primary-200 flex items-center justify-center">{{ sale.quantity }}</div>
+                                    <div (click)="sallerService.addQuantityProduct(sale)" class="border border-primary-200 flex items-center justify-center cursor-pointer">
+                                        <img class="w-[17.82px] h-[17.82px]" src="assets/Media/image/plus.svg" alt="image 3-2">
+                                    </div>
+                                </div>
+                                <div class="style_price">{{ sale.total_price }} FCFA</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
             <!-- 2 -->
         </div>
 
         <div class="modal_info flex items-end justify-end my-2">
             <div>
-                <h3 class="font-bold text-lg">Total : <span class="text-brand-red">{{ sallerService.total() }} FCFA</span></h3>
+                <h3 class="font-bold text-lg">Total : <span class="text-brand-red">{{ sallerService.calcul_total() }} FCFA</span></h3>
             </div>
         </div>
         <div class="modal_info flex items-center justify-between">

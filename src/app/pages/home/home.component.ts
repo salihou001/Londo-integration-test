@@ -64,18 +64,18 @@ export class HomeComponent implements OnInit {
     { id: 2,icon: 'apple',url: 'zozor',name: 'Accesoires'}
   ]
   listBestSeller: Array<BestSeller> = [
-    {id:1,image: 'image 2-1',info1: 'Xiaomi',info2: 'Redmi 6A Dual SIM 16GB HDD - 2GB RAM - Gold- 12 Months ...',first_price: '99,900', second_price: '59,900', reduction: 40, first_best_seller: true,quantity:1,total_price:1},
-    {id:2,image: 'image 3-1',info1: 'UMIDIGI',info2: 'C Note Dual SIM 32GB HDD - 3GB RAM - 13MP - Gold - 12 Months',first_price: '99,900', second_price: '66,000', reduction: 33, first_best_seller: true,quantity:1,total_price:1},
-    {id:3,image: 'imgNew',info1: 'Orange',info2: 'Rise 53 Dual SIM 8GB HDD - White - 12 Months',first_price: '48,000', second_price: '29,900', reduction: 38, first_best_seller: true,quantity:1,total_price:1},
-    {id:4,image: 'image 2_t',info1: 'Apple',info2: 'iPhone 8 64GB HDD - Gold',first_price: '', second_price: '490,000', reduction: 0, first_best_seller: true,quantity:1,total_price:1},
-    {id:5,image: 'imageNew_2',info1: 'Samsung',info2: 'Galaxy S7 Edge 32GB HDD - 4GB RAM - Gold - 12 Months + Cover...',first_price: '250,000', second_price: '184,900', reduction: 38, first_best_seller: true,quantity:1,total_price:1},
+    {id:1,image: 'image 2-1',info1: 'Xiaomi',info2: 'Redmi 6A Dual SIM 16GB HDD - 2GB RAM - Gold- 12 Months ...',first_price: '99,900', second_price: 59900, reduction: 40, first_best_seller: true,quantity:1,total_price:1},
+    {id:2,image: 'image 3-1',info1: 'UMIDIGI',info2: 'C Note Dual SIM 32GB HDD - 3GB RAM - 13MP - Gold - 12 Months',first_price: '99,900', second_price: 66000, reduction: 33, first_best_seller: true,quantity:1,total_price:1},
+    {id:3,image: 'imgNew',info1: 'Orange',info2: 'Rise 53 Dual SIM 8GB HDD - White - 12 Months',first_price: '48000', second_price: 29900, reduction: 38, first_best_seller: true,quantity:1,total_price:1},
+    {id:4,image: 'image 2_t',info1: 'Apple',info2: 'iPhone 8 64GB HDD - Gold',first_price: '', second_price: 490000, reduction: 0, first_best_seller: true,quantity:1,total_price:1},
+    {id:5,image: 'imageNew_2',info1: 'Samsung',info2: 'Galaxy S7 Edge 32GB HDD - 4GB RAM - Gold - 12 Months + Cover...',first_price: '250,000', second_price: 184900, reduction: 38, first_best_seller: true,quantity:1,total_price:1},
   ]
   listBestSale: Array<BestSeller> = [
-    {id:6,image: 'image 3-1',info1: 'UMIDIGI',info2: 'C Note Dual SIM 32GB HDD - 3GB RAM - 13MP - Gold - 12 Months',first_price: '99,900', second_price: '66,000', reduction: 33, first_best_seller: false},
-    {id:7,image: 'image 3-1',info1: 'UMIDIGI',info2: 'C Note Dual SIM 32GB HDD - 3GB RAM - 13MP - Gold - 12 Months',first_price: '99,900', second_price: '66,000', reduction: 33, first_best_seller: false},
-    {id:8,image: 'imgNew',info1: 'Orange',info2: 'Rise 53 Dual SIM 8GB HDD - White - 12 Months',first_price: '48,000', second_price: '29,900  FCFA', reduction: 38, first_best_seller: false},
-    {id:9,image: 'imageNew_2',info1: 'Samsung',info2: 'Galaxy S7 Edge 32GB HDD - 4GB RAM - Gold - 12 Months + Cover...',first_price: '250,000  FCFA', second_price: '184,900', reduction: 38, first_best_seller: false},
-    {id:9,image: 'imageNew_2',info1: 'Samsung',info2: 'Galaxy S7 Edge 32GB HDD - 4GB RAM - Gold - 12 Months + Cover...',first_price: '250,000  FCFA', second_price: '184,900', reduction: 38, first_best_seller: false},
+    {id:6,image: 'image 3-1',info1: 'UMIDIGI',info2: 'C Note Dual SIM 32GB HDD - 3GB RAM - 13MP - Gold - 12 Months',first_price: '99,900', second_price: 66000, reduction: 33, first_best_seller: false},
+    {id:7,image: 'image 3-1',info1: 'UMIDIGI',info2: 'C Note Dual SIM 32GB HDD - 3GB RAM - 13MP - Gold - 12 Months',first_price: '99,900', second_price: 66000, reduction: 33, first_best_seller: false},
+    {id:8,image: 'imgNew',info1: 'Orange',info2: 'Rise 53 Dual SIM 8GB HDD - White - 12 Months',first_price: '48,000', second_price: 29900, reduction: 38, first_best_seller: false},
+    {id:9,image: 'imageNew_2',info1: 'Samsung',info2: 'Galaxy S7 Edge 32GB HDD - 4GB RAM - Gold - 12 Months + Cover...',first_price: '250,000  FCFA', second_price: 184900, reduction: 38, first_best_seller: false},
+    {id:9,image: 'imageNew_2',info1: 'Samsung',info2: 'Galaxy S7 Edge 32GB HDD - 4GB RAM - Gold - 12 Months + Cover...',first_price: '250,000  FCFA', second_price: 184900, reduction: 38, first_best_seller: false},
   ]
   listService: Array<OurService>=[
     {id:1 ,image :'image-1', title: 'Fast delivery'},
