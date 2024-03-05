@@ -1,0 +1,24 @@
+<div class="border-b border-primary-200 grid grid-cols-2 grid-rows-1 p-2">
+    <div class="flex items-center gap-4">
+        <img onclick="my_modal_3.showModal()" class="max-w-[84px] max-h-full object-cover" [src]="'assets/Media/image/'+sale.image+'.png'" alt="image 3-2">
+        <div>
+            <h2>{{sale.info2}}</h2>
+            <p><span class="text-primary-600 inline-block mr-2 line-throught">{{sale.first_price}}  FCFA </span> <span class="inline-block">{{sale.second_price}} FCFA</span></p>
+            <p (click)="sallerService.removeItemSalle(sale)" class="text-brand-red font-normal cursor-pointer">Remove from cart</p>
+        </div>
+    </div>
+    <div class="flex items-center justify-center w-full">
+        <div class="flex items-center justify-end gap-4 w-full">
+            <div class="grid grid-cols-3 grid-rows-1 w-[126px] h-[36px]">
+                <div (click)="sallerService.reduceQuantityProduct(sale)" class="border border-primary-200 flex items-center justify-center cursor-pointer">
+                    <img class="w-[17.82px] h-[1.99px]" src="assets/Media/image/moins.svg" alt="image 3-2">
+                </div>
+                <div class="border border-primary-200 flex items-center justify-center">{{ sale.quantity }}</div>
+                <div (click)="sallerService.addQuantityProduct(sale)" class="border border-primary-200 flex items-center justify-center cursor-pointer">
+                    <img class="w-[17.82px] h-[17.82px]" src="assets/Media/image/plus.svg" alt="image 3-2">
+                </div>
+            </div>
+            <div class="style_price">{{ sale.total_price }} FCFA</div>
+        </div>
+    </div>
+</div>
