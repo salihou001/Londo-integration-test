@@ -38,6 +38,7 @@ export class CheckoutComponent implements OnInit {
   entity!:User;
   http = inject(HttpClient);
   listSaleProduct!:productInfo[];
+  error!: boolean|null;
 
   ngOnInit(): void {
     this.listSaleProduct = this.sallerService.listSaleProduct;
@@ -51,7 +52,7 @@ export class CheckoutComponent implements OnInit {
     });
   }
   goHome(){
-    this.router.navigate([''],{fragment: 'super'});
+    this.router.navigate(['']);
   }
   //
   toggleModeOldUser(){
@@ -174,36 +175,38 @@ export class CheckoutComponent implements OnInit {
     const { firstName, lastName, phone, email, password } = data;
     console.log(data)
 
-    await this.http.post("http://localhost:3000/auth/signUp",{
+    this.http.post("http://localhost:3000/auth/signUp", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
       },
-      body: JSON.stringify({ 
+      body: JSON.stringify({
         firstName,
         lastName,
-        phone, 
-        email, 
-        password 
+        phone,
+        email,
+        password
       }),
-      
-    }).subscribe((data)=>{
+    }).subscribe((data) => {
       console.log(data);
-      if(data){
-        this.toggleModeOldUser();
+      if (data) {
+        setTimeout(()=>{
+          this.toggleModeOldUser();
+        },3500)
+        this.toggleLoader()
       }
-    },(error)=>{
+    }, (error) => {
       console.log(error);
     })
   }
   // 
   async login(){
+    this.error = false;
     const data = this.sallerService.user as User;
     const { email, password } = data;
-    console.log({ email, password })
     
-    await this.http.post("http://localhost:3000/auth/signIn", {
+    const response = this.http.post("http://localhost:3000/auth/signIn", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -213,33 +216,35 @@ export class CheckoutComponent implements OnInit {
         email,
         password
       }),
-    }).subscribe((data)=>{
-      console.log(data);
-      if(data != 'User not found'){
-        this.toggleModeNewUser();
-        this.nextStep();
-      }
-    },(error)=>{
-      console.log(error);
-      // alert('erreur lors du login')
     })
-    let verdict = this.toggleLoader();
-
-    if(verdict){
-      setTimeout((verdict)=>{
-        this.nextStep();
-      },4000)
-    }
+    // loader 
+    this.toggleLoader();
+    // result management
+    response.subscribe((data:any)=>{
+      if(data.response){  
+          setTimeout(()=>{
+            this.nextStep();
+          },3500)
+      }else{
+        // console.log(data);
+        if(data.error === 'User not found please register before'){
+          setTimeout(()=>{
+            this.error = true
+          },3400)
+        }
+        setTimeout(()=>{
+          this.error = true
+        },3400)
+      }
+    })
   }
-
+  
   toPayement(){
-    let verdict = this.toggleLoader();
-
-    if(verdict){
+    console.log(this.sallerService.user);
+    this.toggleLoader();
       setTimeout((verdict)=>{
         this.nextStep();
       },4000)
-    }
   }
   // 
   toggleLoader(){
@@ -256,17 +261,14 @@ export class CheckoutComponent implements OnInit {
         delay: 4,
         ease: 'power4.out'
       })
-      return true;
   }
 
   finalStep(){
-    let verdict = this.toggleLoader();
+    this.toggleLoader();
 
-    if(verdict){
-      setTimeout((verdict)=>{
-        this.nextStep();
-      },4000)
-    }
+    setTimeout((verdict)=>{
+      this.nextStep();
+    },4000)
     gsap.to('.edit',{
       display: 'none',
       duration: .1,

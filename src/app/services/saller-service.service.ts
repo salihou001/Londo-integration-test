@@ -10,8 +10,8 @@ import { productInfo } from '../models/product-info.model';
 export class SallerServiceService {
   router = inject(Router)
 
-  phone!: BestSeller;
   compteur_menu = 0
+  phone!: BestSeller;
   listPanier: Array<BestSeller> = [];
   toggle = 0;
   toggle_1 = 0;
@@ -58,7 +58,7 @@ export class SallerServiceService {
   }
 
   checkout() {
-    this.router.navigate(['checkout'],{fragment: 'super'})
+    this.router.navigate(['checkout'])
   }
 
   toggleSideBasket() {
@@ -78,23 +78,56 @@ export class SallerServiceService {
       this.toggle--
     }
   }
+  // show
+  showBottomCard(seller: BestSeller){
+    gsap.to(`#card_${seller.id}`, {
+      display: 'block',
+      duration: .1,
+      ease: 'Since.out'
+    })
+  }
+  // hide
+  hideBottomCard(seller: BestSeller){
+    gsap.to(`#card_${seller.id}`, {
+      display: 'none',
+      duration: .1,
+      ease: 'Since.out'
+    })
+  }
+  //
+  showMenu(){
+    gsap.to('.toggle_menu',{
+      opacity: 1,
+      duration: .3
+    })
+  }
+  hideMenu(){
+    gsap.to('.toggle_menu',{
+      opacity: 0,
+      duration: .3
+    })
+  }
+  // 
+  saveOnBasket(){
+    if(this.listPanier.length === 0){
+      this.listPanier.push(this.phone);
+    }else{
+      if(!this.isPhone(this.listPanier,this.phone)){
+        this.listPanier.push(this.phone);
+        localStorage.setItem(`item-${this.phone.id}`,String(this.phone.id));
+      }else{
+        alert('il exite déja dans votre pannier');
+      }
+    }
+    console.log(this.listPanier);
+    this.router.navigate(['']);
+  }
 
-  toggleBottom(seller: BestSeller) {
-    console.log(seller);
-    if (this.toggle_1 === 0) {
-      gsap.to(`#card_${seller.id}`, {
-        display: 'block',
-        duration: .1,
-        ease: 'Since.out'
-      })
-      this.toggle_1++
-    } else {
-      gsap.to(`#card_${seller.id}`, {
-        display: 'none',
-        duration: .1,
-        ease: 'Since.out'
-      })
-      this.toggle_1--
+  isPhone(arrayPhone:Array<BestSeller>,phone:BestSeller){
+    if(arrayPhone.find((item)=> item.id === phone.id)){
+      return true;
+    }else{
+      return false;
     }
   }
 }

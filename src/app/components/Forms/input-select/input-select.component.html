@@ -3,12 +3,12 @@
         <label for="State">State</label>
     </div>
     <div class="w-full">
-        <select class="select select-bordered input w-full" autocomplete="off">
-            <option class="rouunded-none py-8 text-lg" disabled selected>Pick one</option>
+        <select class="select select-bordered input w-full" autocomplete="off" [(ngModel)]="tmp" (change)="onChange()">
+            <option class="rounded-none py-8 text-lg" disabled selected>Pick one</option>
             @for(item of listOptions; track item){
-                <option class="rouunded-none py-8 text-lg">{{item}}</option>
+                <option class="rounded-none py-8 text-lg" [value]="item">{{item}}</option>
             }
-            <option class="rouunded-none py-8 text-lg">Other</option>
+            <option class="rounded-none py-8 text-lg">Other</option>
         </select>
     </div>
 </div>

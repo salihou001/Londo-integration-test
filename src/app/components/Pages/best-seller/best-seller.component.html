@@ -1,4 +1,4 @@
-<div (mouseenter)="toggleBottom()" (mouseleave)="toggleBottom()" class="galery border border-primary-200 min-h-[400px] py-1 shadow-md bg-white hover:bg-primary-200 cursor-pointer">
+<div (mouseenter)="serviceSaller.showBottomCard(seller)" (mouseleave)="serviceSaller.hideBottomCard(seller)" class="galery border border-primary-200 min-h-[400px] py-1 shadow-md bg-white hover:bg-primary-200 cursor-pointer">
     <div class="galery_image h-[50%] p-2">
         <img class="h-full w-full" [src]="'assets/Media/image/'+seller.image+'.png'" alt="">
     </div>
@@ -9,7 +9,7 @@
             <p class="invisible">{{ seller.info1 }}</p>
         }
         @if(seller.info2){
-            <p (click)="sendPhone()" class="min-h-[55px]">{{ seller.info2 }}</p>
+            <p class="min-h-[55px]">{{ seller.info2 }}</p>
         }@else{
             <p class="invisible">{{ seller.info2 }}</p>
         }
@@ -41,7 +41,7 @@
                     <div class="start_text text-primary-900 whitespace-nowrap">4.0 (36 reviews)</div>
                 </div>
                 <div class="bouton grid grid-cols-2 grid-rows-1 w-full gap-2">
-                    <div class="bouton_buy btn-1 text-white bg-brand-red">Buy now</div>
+                    <div (click)="sendPhone()" class="bouton_buy btn-1 text-white bg-brand-red">Buy now</div>
                     <div class="bouton_more btn-1 text-[#5C5C73] bg-white">Know more</div>
                 </div>
             </div>

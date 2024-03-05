@@ -37,25 +37,39 @@
         </div>
         <div class="grid grid-cols-2 grid-rows-1">
             <div class="grid grid-cols-4 grid-rows-1 gap-2 max-w-7xl mx-auto py-4">
-                <div class="cursor-pointer">
+                <div class="cursor-pointer cursor-pointer border border-primary-200">
                     <img src="assets/Media/image/Group 6.png" alt="">
                 </div>
-                <div class="cursor-pointer">
+                <div class="cursor-pointer cursor-pointer border border-primary-200">
                     <img src="assets/Media/image/Group 5.png" alt="">
                 </div>
-                <div class="cursor-pointer">
+                <div class="cursor-pointer cursor-pointer border border-primary-200">
                     <img src="assets/Media/image/Group 4-1.png" alt="">
                 </div>
-                <div class="cursor-pointer">
+                <div class="cursor-pointer cursor-pointer border border-primary-200">
                     <img src="assets/Media/image/Group 3.png" alt="">
                 </div>
             </div>
             <div class="flex items-center justify-between">
-                <div>
-                    <img src="assets/Media/image/price_sale.png" alt="">
+                <div class="flex items-center justify-center gap-8">
+                    <div>
+                        <p class="text-xl text-brand-red font-extrabold">{{sallerService.phone?sallerService.phone.second_price:'184,900'}} FCFA</p>
+                        <p class="text-primary-500 line-through">{{sallerService.phone?sallerService.phone.first_price:'250,000'}} FCFA</p>
+                    </div>
+                    <div>
+                        @if(sallerService.phone){
+                            @if(sallerService.phone.reduction != 0){
+                                <div class="border border-brand-red btn_new text-brand-red">{{ sallerService.phone?sallerService.phone.reduction:'0' }}%</div>
+                            }@else{
+                                <div class="border border-brand-red btn_new text-brand-red invisible">{{ sallerService.phone?sallerService.phone.reduction:'0' }}%</div>
+                            }
+                        }@else{
+                            <div class="border border-brand-red btn_new text-brand-red invisible">20%</div>
+                        }
+                    </div>
                 </div>
                 <div class="flex items-center gap-2">
-                    <div (click)="saveOnBasket()" class="btn-1 flex items-center gap-2 bg-primary-200">
+                    <div (click)="sallerService.saveOnBasket()" class="btn-1 flex items-center gap-2 bg-primary-200">
                         <div><img class="h-[17px] w-[20px]" src="assets/Media/Svg/Vector-11.svg" alt=""></div>
                         <div>Save for later</div>
                     </div>

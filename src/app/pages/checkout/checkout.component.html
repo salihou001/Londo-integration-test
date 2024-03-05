@@ -61,6 +61,12 @@
                     </div>
                     <div class="sign_login w-full h-[280px] relative">
                         <div class="login absolute top-0 h-full w-[70%]">
+                            @if(error){
+                                <div role="alert" class="alert alert-error rounded-none border-primary-200">
+                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" class="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg> -->
+                                    <span class="text-white text-lg">Email or Password is wrong !</span>
+                                </div>
+                            }
                             <form action="" class="w-full">
                                 <div class="w-full">
                                     <!-- Email -->
@@ -147,19 +153,13 @@
                     <form action="" class="ml-8 mt-2">
                         <div class="grid grid-cols-2 grid-rows-1 w-full gap-4">
                             <!-- State -->
-                            <app-input-select [name]="'State'" [listOptions]="['Douala','Yaounde']" />
+                            <app-input-select [name]="'state'" [listOptions]="['Douala','Yaounde']" />
                             <!-- Region -->
-                            <app-input-select [name]="'Region'" [listOptions]="['Littoral','Centre']" />
+                            <app-input-select [name]="'region'" [listOptions]="['Littoral','Centre']" />
                         </div>
                         <!-- Adresse -->
                         <app-input-text-area [name]="'address'" [entity]="sallerService.user" [label]="'Adresse'" />
-                        <!-- <div class="w-full mt-2">
-                            <div>
-                                <label for="Region">Address</label>
-                            </div>
-                            <textarea placeholder="Bio"
-                                class="input w-full min-h-[70px] textarea textarea-bordered textarea-sm"></textarea>
-                        </div> -->
+
                         <div class="register_btn flex items-center justify-end">
                             <div (click)="toPayement()"
                                 class="w-[45%] border mt-4 flex items-center justify-center btn-1 bg-[#F4A5A8] text-white">
@@ -314,7 +314,7 @@
 <app-modal-basket/>
 <div class="loader hidden w-screen h-screen absolute top-[50%] left-[50%] z-50 bg-black opacity-[60%] -translate-x-[50%] -translate-y-[50%]">
     <div class="relative w-full h-full flex items-center justify-center">
-        <div class="loading loading-spinner loading-lg inline-block w-[420px] h-[420px] text-success opacity-[100%] border-4 border-white"></div>
+        <div class="loading loading-spinner text-success inline-block w-[420px] h-[420px] text-success opacity-[100%] border-4 border-white"></div>
     </div>
 </div>
 <div class="succes_payement hidden w-screen h-screen absolute top-[50%] left-[50%] z-50 bg-black opacity-[60%] -translate-x-[50%] -translate-y-[50%]">

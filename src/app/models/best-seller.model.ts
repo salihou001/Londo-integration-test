@@ -7,4 +7,6 @@ export interface BestSeller{
     second_price?:string;
     reduction?:number;
     first_best_seller?:boolean;
+    quantity?:number;
+    total_price?:number;
 }

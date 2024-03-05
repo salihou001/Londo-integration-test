@@ -15,6 +15,6 @@ export class InputTextAreaComponent {
   sallerService = inject(SallerServiceService);
   // 
   onChange(value:string){
-    this.sallerService.user[this.name] = value;
+    this.sallerService.user[this.name] = value.trim();
   }
 }

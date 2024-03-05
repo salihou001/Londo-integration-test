@@ -14,10 +14,8 @@ export class BestSellerComponent {
   @Input() seller!:BestSeller;
   @Output() phone = new EventEmitter();
   sendPhone(){  
+    this.serviceSaller.hideMenu();
     this.phone.emit(this.seller);
-  }
-  toggleBottom(){
-    this.serviceSaller.toggleBottom(this.seller);
   }
 
 }
