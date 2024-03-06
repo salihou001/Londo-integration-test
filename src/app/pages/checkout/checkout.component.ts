@@ -12,6 +12,7 @@ import { productInfo } from '../../models/product-info.model';
 import gsap from 'gsap';
 import { InputPasswordComponent } from '../../components/Forms/input-password/input-password.component';
 import { InputTextAreaComponent } from '../../components/Forms/input-text-area/input-text-area.component';
+import { ModalItemComponent } from '../../components/Core/modal-item/modal-item.component';
 
 @Component({
   selector: 'app-checkout',
@@ -24,7 +25,8 @@ import { InputTextAreaComponent } from '../../components/Forms/input-text-area/i
     ModalBasketComponent,
     ProductSaleInfoComponent,
     InputPasswordComponent,
-    InputTextAreaComponent
+    InputTextAreaComponent,
+    ModalItemComponent
   ],
   providers: [HttpClient],
   templateUrl: './checkout.component.html',
@@ -275,5 +277,9 @@ export class CheckoutComponent implements OnInit {
       delay:4,
       ease: 'Since.out'
     })
+  }
+
+  goToSmartphone(){
+    this.router.navigate(['smartphone']);
   }
 }

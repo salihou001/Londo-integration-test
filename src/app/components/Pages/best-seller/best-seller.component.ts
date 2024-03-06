@@ -10,11 +10,12 @@ import { SallerServiceService } from '../../../services/saller-service.service';
   styleUrl: './best-seller.component.scss'
 })
 export class BestSellerComponent {
-  serviceSaller = inject(SallerServiceService);
+  sallerService = inject(SallerServiceService);
   @Input() seller!:BestSeller;
   @Output() phone = new EventEmitter();
   sendPhone(){  
-    this.serviceSaller.hideMenu();
+    this.sallerService.hideMenu();
+    this.sallerService.setBasket();
     this.phone.emit(this.seller);
   }
 

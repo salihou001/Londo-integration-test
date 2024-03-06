@@ -13,6 +13,13 @@ export class SallerServiceService {
   compteur_menu = 0
   phone!: BestSeller;
   listPanier: Array<BestSeller> = [];
+  listBestSeller: Array<BestSeller> = [
+    {id:1,image: 'image 2-1',info1: 'Xiaomi',info2: 'Redmi 6A Dual SIM 16GB HDD - 2GB RAM - Gold- 12 Months ...',first_price: '99,900', second_price: 59900, reduction: 40, first_best_seller: true,quantity:1,total_price:1},
+    {id:2,image: 'image 3-1',info1: 'UMIDIGI',info2: 'C Note Dual SIM 32GB HDD - 3GB RAM - 13MP - Gold - 12 Months',first_price: '99,900', second_price: 66000, reduction: 33, first_best_seller: true,quantity:1,total_price:1},
+    {id:3,image: 'imgNew',info1: 'Orange',info2: 'Rise 53 Dual SIM 8GB HDD - White - 12 Months',first_price: '48000', second_price: 29900, reduction: 38, first_best_seller: true,quantity:1,total_price:1},
+    {id:4,image: 'image 2_t',info1: 'Apple',info2: 'iPhone 8 64GB HDD - Gold',first_price: '', second_price: 490000, reduction: 0, first_best_seller: true,quantity:1,total_price:1},
+    {id:5,image: 'imageNew_2',info1: 'Samsung',info2: 'Galaxy S7 Edge 32GB HDD - 4GB RAM - Gold - 12 Months + Cover...',first_price: '250,000', second_price: 184900, reduction: 38, first_best_seller: true,quantity:1,total_price:1},
+  ];
   toggle = 0;
   toggle_1 = 0;
   user: any = {
@@ -82,13 +89,13 @@ export class SallerServiceService {
     })
   }
   // 
-  saveOnBasket(){
+  saveOnBasket(phone:BestSeller){
     if(this.listPanier.length === 0){
-      this.listPanier.push(this.phone);
+      this.listPanier.push(phone);
     }else{
-      if(!this.isPhone(this.listPanier,this.phone)){
-        this.listPanier.push(this.phone);
-        localStorage.setItem(`item-${this.phone.id}`,String(this.phone.id));
+      if(!this.isPhone(this.listPanier,phone)){
+        this.listPanier.push(phone);
+        localStorage.setItem(`item-${phone.id}`,String(phone.id));
       }else{
         alert('il exite déja dans votre pannier');
       }
@@ -139,5 +146,45 @@ export class SallerServiceService {
     }else{
       return 0;
     }
+  }
+
+  removeItemSalle(item:BestSeller){
+      
+    if(this.listPanier.length > 0){
+      const index = this.listPanier.findIndex((el)=> el.id === item.id);
+      console.log(index);
+      if(index > -1)
+      this.listPanier.splice(index, 1);
+    }else{
+      alert('La liste des panier est encore vide!');
+    }
+    // retirer l'id de l'article dans le localStorage
+    const itemStorage = localStorage.getItem( `item-${item.id}`);
+    if(itemStorage){
+      // console.log(itemStorage)
+      localStorage.removeItem('item-'+itemStorage);
+    }
+  }
+
+  setBasket(){
+    let item;
+    // boucles sur tout les elements present dans le localstorage
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i) as string;
+      const value = localStorage.getItem(key) as string;
+      item = this.listBestSeller.find(el => el.id === Number(value));
+    }
+    if(item){
+      if(!this.isPhone(this.listPanier,item)){
+        this.listPanier.push(item);
+      }else{
+        alert('Cet article existe déja dans votre panier');
+      }
+    }
+    this.isSomething();
+  }
+
+  isSomething(){
+    return this.listPanier.length;
   }
 }

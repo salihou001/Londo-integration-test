@@ -29,7 +29,6 @@ export class SmartphoneComponent implements OnInit{
   activatedRoute=inject(ActivatedRoute);
   phone!:BestSeller;
 
-  listStorage:Array<string>=[]
 
   ngOnInit(): void {
     this.phone = this.sallerService.phone;
@@ -39,13 +38,8 @@ export class SmartphoneComponent implements OnInit{
         document.getElementById(data.fragment)?.scrollIntoView();
       }
     });
-    // boucles sur tout les elements present dans le localstorage
-    // for (let i = 0; i < localStorage.length; i++) {
-    //   const key = localStorage.key(i) as string;
-    //   const value = localStorage.getItem(key) as string;
-    //   this.listStorage.push(value);
-    // }
-    // console.log(this.listStorage);
+    this.sallerService.isSomething();
+    // this.sallerService.setBasket();
   }
   listBestSeller: Array<BestSeller> = [
     {id:1,image: 'image 2-1',info1: 'Xiaomi',info2: 'Redmi 6A Dual SIM 16GB HDD - 2GB RAM - Gold- 12 Months ...',first_price: '99,900', second_price: 59900, reduction: 40, first_best_seller: true,quantity:1,total_price:1},
@@ -60,26 +54,4 @@ export class SmartphoneComponent implements OnInit{
     this.router.navigate(['smartphone']);
     this.ngOnInit()
   }
-
-  // saveOnBasket(){
-  //   if(this.sallerService.listPanier.length === 0){
-  //     this.sallerService.listPanier.push(this.sallerService.phone);
-  //   }else{
-  //     if(!this.isPhone(this.sallerService.listPanier,this.sallerService.phone)){
-  //       this.sallerService.listPanier.push(this.sallerService.phone);
-  //     }else{
-  //       alert('il exite déja dans votre pannier');
-  //     }
-  //   }
-  //   console.log(this.sallerService.listPanier);
-  //   this.router.navigate([''],{data: 'super'});
-  // }
-
-  // isPhone(arrayPhone:Array<BestSeller>,phone:BestSeller){
-  //   if(arrayPhone.find((item)=> item.id === phone.id)){
-  //     return true;
-  //   }else{
-  //     return false;
-  //   }
-  // }
 }

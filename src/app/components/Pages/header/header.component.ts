@@ -13,8 +13,8 @@ import { SallerServiceService } from '../../../services/saller-service.service';
 })
 export class HeaderComponent {
   router = inject(Router)
-  isSomething = inject(SallerServiceService).listPanier.length;
-  salllerService = inject(SallerServiceService);
+  // isSomething = inject(SallerServiceService).listPanier.length;
+  sallerService = inject(SallerServiceService);
 
   compteur_menu=0
   listItems: Array<MenuItems>=[
@@ -25,10 +25,10 @@ export class HeaderComponent {
   ]
   toggleMenu(){
     if(this.compteur_menu === 0){
-      this.salllerService.hideMenu();
+      this.sallerService.hideMenu();
       this.compteur_menu++;
     }else{
-      this.salllerService.showMenu();
+      this.sallerService.showMenu();
       this.compteur_menu--;
     }
   }
@@ -38,7 +38,7 @@ export class HeaderComponent {
     if(listUrl.includes(url)){
       if(url === 'smartphone'){
         this.router.navigate([url]);
-        this.salllerService.hideMenu();
+        this.sallerService.hideMenu();
       }
     }
   }
@@ -48,6 +48,6 @@ export class HeaderComponent {
   }
   // 
   toggleSideBasket(){
-    this.salllerService.toggleSideBasket();
+    this.sallerService.toggleSideBasket();
   }
 }

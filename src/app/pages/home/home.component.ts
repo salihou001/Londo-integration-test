@@ -16,6 +16,7 @@ import { SallerServiceService } from '../../services/saller-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import gsap from 'gsap';
 import { OverlayBasketComponent } from '../../components/Core/overlay-basket/overlay-basket.component';
+import { ModalBasketComponent } from '../../components/Core/modal-basket/modal-basket.component';
 
 @Component({
   selector: 'app-home',
@@ -29,7 +30,8 @@ import { OverlayBasketComponent } from '../../components/Core/overlay-basket/ove
     OurServiceComponent,
     HeaderComponent,
     FooterComponent,
-    OverlayBasketComponent
+    OverlayBasketComponent,
+    ModalBasketComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
@@ -46,6 +48,8 @@ export class HomeComponent implements OnInit {
         document.getElementById(data.fragment)?.scrollIntoView();
       }
     });
+    this.sallerService.isSomething();
+    // this.sallerService.setBasket();
   }
 
   listItems: Array<MenuItems>=[

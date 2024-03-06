@@ -59,10 +59,10 @@
             Your account
           </div>
         </div>
-        <div (click)="toggleSideBasket()" class="account flex items-center justify-start w-full gap-2">
+        <div onclick="my_modal_3.showModal()" class="account flex items-center justify-start w-full gap-2">
           <div class="cursor-pointer account_icon relative">
             <img class="absolute" src="assets/Media/image/Vector.png" alt="" />
-            @if(isSomething > 0){
+            @if(sallerService.isSomething() > 0){
             <div
               class="badge absolute -top-1 -left-2 rounded-full w-[10px] border-none h-[10px] p-1 text-white bg-brand-red">
             </div>

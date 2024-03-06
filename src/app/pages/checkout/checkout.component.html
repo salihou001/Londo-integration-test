@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="flex items-center justify-end cursor-pointer">
-                    <div class="flex items-center gap-2">
+                    <div (click)="goToSmartphone()" class="flex items-center gap-2">
                         <div>
                             <img class="cursor-pointer" src="assets/Media/Svg/loader.svg" alt="" />
                         </div>
@@ -268,36 +268,12 @@
                     <!-- @for (item of listSaleProduct; track item.id) {
                         <app-product-sale-info [product]="item" />
                     }  -->
-                    <div class="flex items-center border-b border-primary-200 p-4 w-full">
-                        <div class="h-full flex items-center gap-4 w-full">
-                            <img onclick="my_modal_3.showModal()" class="w-[104px] h-[104px] cursor-pointer" src="assets/Media/image/Group 4-2.png" alt="image 3-2">
-                            <div>
-                                <div>
-                                    <h2>Apple iPhone 6 64GB HDD - 12 Months + Cover + Screen ...</h2>
-                                    <p><span class="text-primary-600 inline-block mr-2">250,000 FCFA </span> <span
-                                            class="inline-block">159,900 FCFA</span></p>
-                                </div>
-                                <p class="text-brand-red font-normal flex items-center justify-between mt-4"><span
-                                        class="inline-block">{{ 0 }} pcs</span><span class="inline-block">{{ 0 }} FCFA</span>
-                                </p>
-                            </div>
-                        </div>
+                    <div class="w-full max-h-[300px] overflow-y-scroll">
+                        @for(sale of sallerService.listPanier;track sale.id){
+                            <app-modal-item [sale]="sale" />
+                        }
                     </div>
-                    <div class="flex items-center border-b border-primary-200 p-4">
-                        <div class="h-full flex items-center gap-4">
-                            <img onclick="my_modal_3.showModal()" class="w-[104px] h-[104px] cursor-pointer" src="assets/Media/image/Group 4-1.png" alt="image 3-2">
-                            <div>
-                                <div>
-                                    <h2>Apple iPhone 6 64GB HDD - 12 Months + Cover + Screen ...</h2>
-                                    <p><span class="text-primary-600 inline-block mr-2">250,000 FCFA </span> <span
-                                            class="inline-block">159,900 FCFA</span></p>
-                                </div>
-                                <p class="text-brand-red font-normal flex items-center justify-between mt-4"><span
-                                        class="inline-block">{{0}} pcs</span><span class="inline-block">{{ 0 }} FCFA</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div class="footer_blog p-3">
                         <div class="mx-4 flex items-center justify-between">
                             <div>Total: </div>

@@ -10,7 +10,7 @@
     <div class="flex items-center justify-center w-full">
         <div class="flex items-center justify-end gap-4 w-full">
             <div class="grid grid-cols-3 grid-rows-1 w-[126px] h-[36px]">
-                <div (click)="sallerService.reduceQuantityProduct(sale)" class="border border-primary-200 flex items-center justify-center cursor-pointer">
+                <div (click)="sallerService.reduceQuantityProduct(sale)" class="border cursor-pointer border-primary-200 flex items-center justify-center cursor-pointer">
                     <img class="w-[17.82px] h-[1.99px]" src="assets/Media/image/moins.svg" alt="image 3-2">
                 </div>
                 <div class="border border-primary-200 flex items-center justify-center">{{ sale.quantity }}</div>
@@ -18,7 +18,7 @@
                     <img class="w-[17.82px] h-[17.82px]" src="assets/Media/image/plus.svg" alt="image 3-2">
                 </div>
             </div>
-            <div class="style_price">{{ sale.total_price }} FCFA</div>
+            <div class="style_price">{{ (sale.quantity && sale.second_price)?sale.quantity * sale.second_price:0 }} FCFA</div>
         </div>
     </div>
 </div>
