@@ -177,8 +177,6 @@ export class SallerServiceService {
     if(item){
       if(!this.isPhone(this.listPanier,item)){
         this.listPanier.push(item);
-      }else{
-        alert('Cet article existe déja dans votre panier');
       }
     }
     this.isSomething();

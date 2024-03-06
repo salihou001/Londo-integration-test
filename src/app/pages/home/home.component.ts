@@ -15,7 +15,6 @@ import { FooterComponent } from '../../components/Pages/footer/footer.component'
 import { SallerServiceService } from '../../services/saller-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import gsap from 'gsap';
-import { OverlayBasketComponent } from '../../components/Core/overlay-basket/overlay-basket.component';
 import { ModalBasketComponent } from '../../components/Core/modal-basket/modal-basket.component';
 
 @Component({
@@ -30,7 +29,6 @@ import { ModalBasketComponent } from '../../components/Core/modal-basket/modal-b
     OurServiceComponent,
     HeaderComponent,
     FooterComponent,
-    OverlayBasketComponent,
     ModalBasketComponent
   ],
   templateUrl: './home.component.html',

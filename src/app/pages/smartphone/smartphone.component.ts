@@ -6,7 +6,6 @@ import { HeaderComponent } from '../../components/Pages/header/header.component'
 import { FooterComponent } from '../../components/Pages/footer/footer.component';
 import { BestSeller } from '../../models/best-seller.model';
 import { SallerServiceService } from '../../services/saller-service.service';
-import { OverlayBasketComponent } from '../../components/Core/overlay-basket/overlay-basket.component';
 import { ModalBasketComponent } from '../../components/Core/modal-basket/modal-basket.component';
 
 @Component({
@@ -17,7 +16,6 @@ import { ModalBasketComponent } from '../../components/Core/modal-basket/modal-b
     BestSellerComponent,
     HeaderComponent,
     FooterComponent,
-    OverlayBasketComponent,
     ModalBasketComponent
   ],
   templateUrl: './smartphone.component.html',
